@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Enter Name</title>
+<title>Name</title>
 </head>
 <body>
-	<form action="NewFile.jsp" method="POST">
-		<input type="text" name="uname" />
-		<input type="submit" value="Submit" />
-	</form>
+	Welcome <%= request.getParameter("uname") %>
 </body>
 </html>
