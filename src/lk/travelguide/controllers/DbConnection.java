@@ -31,6 +31,7 @@ public class DbConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.err.println("hello");
 	}
 	
 	
