@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+D:\Travel_Guide\.metadata\.plugins\org.eclipse.jdt.core
+1458425919.index
