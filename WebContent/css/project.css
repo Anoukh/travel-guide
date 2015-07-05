@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+.roundcorner{
+	-webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+		size:inherit;
+		
+	}
+.gap0{
+	height:10px;
+	}	
+
+.gap1{
+	height:20px;
+	}	
+	
+.gap4{
+	height:50px;
+	}	
+	
+.tablebodyrowcol tr:nth-child(odd) { /*(odd) or (2n 1)*/
+	background: #888888;
+}
+
+.tablebodyrowcol tr:nth-child(even) { /*(even) or (2n 0)*/
+	background: #ffffff;
+}
