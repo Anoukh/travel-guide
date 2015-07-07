@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="css/project.css">
@@ -23,7 +24,7 @@ Header Image
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span8"><input style="font-size:36px" placeholder="Place Name" type="text" name="placename" id="placename" class="span12" onKeyUp="" readonly="yes"/></aside>
+<aside class="span8"><input style="font-size:36px" placeholder="Place Name" type="text" name="placename" id="placename" class="span12" onKeyUp="" readonly/></aside>
 <article class="span4">
 <span class="star-rating">
   <input type="radio" name="rating" value="1"><i></i>
@@ -42,9 +43,9 @@ Header Image
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span8"><input style="font-size:18px ; border:hidden " placeholder="Place City" type="text" name="placecity" id="placecity" class="span12" onKeyUp="" readonly="yes"/></aside>
+<aside class="span8"><input style="font-size:18px ; border:hidden " placeholder="Place City" type="text" name="placecity" id="placecity" class="span12" onKeyUp="" readonly/></aside>
 <article class="span4">
-<input style="font-size:18px ; border:hidden" placeholder="Charges" type="text" name="placecharge" id="placecharge" class="span12" onKeyUp="" readonly="yes"/>
+<input style="font-size:18px ; border:hidden" placeholder="Charges" type="text" name="placecharge" id="placecharge" class="span12" onKeyUp="" readonly/>
 
 </article>
 
@@ -58,7 +59,7 @@ Header Image
 <aside class="span8"></aside>
 <aside class="span2"><font size="+1">Updated Date</font></aside>
 <article class="span2">
-<input style="font-size:18px; border:hidden" placeholder="Updated Date" type="text" name="placedate" id="placedate" class="span12" onKeyUp="" readonly="yes"/>
+<input style="font-size:18px; border:hidden" placeholder="Updated Date" type="text" name="placedate" id="placedate" class="span12" onKeyUp="" readonly/>
 
 </article>
 
@@ -70,7 +71,7 @@ Header Image
 <div class="row-fluid">
 <section class="span12">
 <aside class="span8"><div id="placeimage"><img src="" height="400px" width="100%"/></div></aside>
-<article class="span4"><div id="map" class="span12" style="height:400px" ></div></article>
+<article class="span4"><div id="placemap" class="span12" style="height:400px" ></div></article>
 
 
 												</br>
@@ -137,6 +138,29 @@ placeholder="Comment"></textarea>
 
 </div>
 </div>
+
+<script>
+function initialize() {
+  viewlon = 6.788070599999999;
+  viewlat = 79.89128129999995;
+  var myLatlng = new google.maps.LatLng(viewlon,viewlat);
+  var mapOptions = {
+    zoom: 9,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('placemap'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
