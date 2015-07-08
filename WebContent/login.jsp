@@ -27,7 +27,7 @@ Header Image
 
 <br/>
 <center><label id="loginmsg" style="width:100%;font-size:20px" class="formlabel"></label></center>
-
+<form method="post" action="LoginServlet">
 <table class="table-responsive" align="center" >
 <tr>
 <td width="50%" class="span12" style="color:#CDCDCD; font-size:20px;">User Name</td>
@@ -46,10 +46,11 @@ Header Image
 <td></td>
 <td><label class="span6"></label>
 
-<button type="button"  style="background-color:#066584 ;float:right "  class="btn btn-info btn-lg span12" onClick="">Login</button>
+<button type="submit"  style="background-color:#066584 ;float:right "  class="btn btn-info btn-lg span12"  >Login</button>
 </td>
 </tr>
 </table>
+</form>
 </div>
 <div style="float:left; width:60% ; background:rgba(14,77,85,0.6) " class="roundcorner">
 <center><font size="+2"> Sign up</font></center>
