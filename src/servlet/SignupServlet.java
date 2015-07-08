@@ -1,26 +1,23 @@
 package servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import lk.travelguide.controllers.Login;
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class SignupServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/SignupServlet")
+public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public SignupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,10 +27,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
-	
-	
-	
 	}
 
 	/**
@@ -41,44 +34,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try
-		{	    
-
-		     
-		     String username = (request.getParameter("LoginUserName"));
-		     String password = (request.getParameter("LoginPassword"));
-
-		     
-		     System.out.println("hello");
-		     Login obj = new Login();
-		     obj.authentication(username,password);
-		     System.out.println("world");
-		     
-		     //HttpSession session = request.getSession(true);	    
-		    // session.setAttribute("currentSessionUser",user); 
-		     //response.sendRedirect("index.jsp"); //logged-in page      		
-		     
-				
-				
-		}catch (Throwable theException) 	    
-		{
-		     System.out.println(theException); 
-		}
-
-
-	
-	
-	
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
