@@ -11,8 +11,25 @@ import com.mongodb.MongoException;
 
 public class DbConnection {
 
-	public static void main(String[] args){
+	public  DB dbCon(){
 		MongoClient mongo;
+		DB db = null;
+		try {
+			mongo = new MongoClient( "localhost" , 27017 );
+		
+		db = mongo.getDB("test");
+		return db;
+		}catch (UnknownHostException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return db;	
+	}
+		
+	
+	
+	public static void main(String[] args){
+		/*MongoClient mongo;
 		try {
 			mongo = new MongoClient( "localhost" , 27017 );
 		
@@ -31,7 +48,7 @@ public class DbConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.err.println("hello");
+		System.err.println("hello");*/
 	}
 	
 	
