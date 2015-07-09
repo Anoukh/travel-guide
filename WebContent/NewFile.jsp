@@ -7,6 +7,22 @@
 <title>Name</title>
 </head>
 <body>
-	Welcome <%= request.getParameter("uname") %>
+<form action="Testservlet" method="POST">
+		<input type="text" name="name" />
+		<input type="submit" value="Submit" />
+	</form>
+<%
+
+if(request.getAttribute("message") != null){
+response.getWriter().print(request.getAttribute("message"));
+
+//String st =(String)request.getAttribute("message");
+}
+%>
+<%if(request.getAttribute("message") != null){ %>
+<p>
+name is <h1><%= request.getAttribute("message")%></h1> 
+</p>
+<% } %>	
 </body>
 </html>

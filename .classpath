@@ -18,6 +18,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/project/test/WebContent/WEB-INF/lib/mongo-java-driver-2.11.1.jar"/>
+	<classpathentry kind="lib" path="D:/Aathal Project/Travel_Guide/libs/mongo-java-driver-2.11.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
