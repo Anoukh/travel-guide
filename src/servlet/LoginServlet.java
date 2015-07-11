@@ -48,10 +48,12 @@ public class LoginServlet extends HttpServlet {
 		     String username = (request.getParameter("LoginUserName"));
 		     String password = (request.getParameter("LoginPassword"));
 
+
+		     System.out.println(username);
+		     System.out.println(password);
 		     
-		     System.out.println("hello");
-		     Login obj = new Login();
-		     obj.authentication(username,password);
+		     //Login obj = new Login();
+		     Login.authentication(username,password);
 		     System.out.println("world");
 		     
 		     //HttpSession session = request.getSession(true);	    

@@ -11,11 +11,12 @@ import java.util.List;
 
 import lk.travelguide.models.User;
 
+
+import com.mongodb.DBObject;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 import com.mongodb.WriteResult;
@@ -23,7 +24,7 @@ import com.mongodb.WriteResult;
 
 public class Login {
 	
-public void authentication(String name, String password){
+public static void authentication(String name, String password){
 		System.out.println("authenticating");
 		boolean auth ;
 		DB db;
