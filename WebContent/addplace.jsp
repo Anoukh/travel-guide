@@ -22,7 +22,7 @@ Header Image
 </div>
 <font size="+1" >
 
-<form action="" method="post">
+<form action="AddPlaceServlet" method="post">
 
 <div class="gap0"></div>
 <div class="row-fluid">

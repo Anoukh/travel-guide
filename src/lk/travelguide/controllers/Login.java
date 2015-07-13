@@ -52,11 +52,12 @@ public static void authentication(String name, String password){
 		searchQuery.put("$and", obj2);
 		DBCursor cursor = table.find(searchQuery);
 		//cursor.hasNext()
-		DBObject cs = cursor.next();
 		
+		System.out.println(cursor);
 		
-		if(cursor!=null){
-			//System.out.println("authenticating....");
+		if(cursor.hasNext()){
+			DBObject cs = cursor.next();
+			System.out.println("authenticating....");
 			String pass = (String)cs.get("password");
 			String username = (String)cs.get("name");
 			String email = (String)cs.get("email");
@@ -75,10 +76,12 @@ public static void authentication(String name, String password){
 			
 		}
 		
+		
 		else{ 
-			//System.out.println("failed");
+			System.out.println("failed");
 			
 		}
+		
 	
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
