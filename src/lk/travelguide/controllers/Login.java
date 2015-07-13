@@ -12,6 +12,7 @@ import java.util.List;
 import lk.travelguide.models.User;
 
 
+
 import com.mongodb.DBObject;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -24,10 +25,11 @@ import com.mongodb.WriteResult;
 
 public class Login {
 	
-public static void authentication(String name, String password){
+public static String authentication(String name, String password){
 		System.out.println("authenticating");
 		boolean auth ;
 		DB db;
+		String message = null;
 		/*
 		try {
 			mongo = new MongoClient( "localhost" , 27017 );
@@ -72,14 +74,27 @@ public static void authentication(String name, String password){
 			userdata.setUser_Level(user_level);
 			userdata.setRequest_Accept(request_accept);
 			
-			//System.out.println("authenticated");
+			//System.out.println("authenticated");    
+			message ="loginsuccess";
 			
 		}
 		
 		
 		else{ 
-			System.out.println("failed");
+			message ="loginfail";
 			
+			//System.out.println("failed");
+			
+			//String message = null;
+		     
+
+		     
+		         //   message = "You are not the valid user...";
+		        
+		     
+		     
+		     //request.setAttribute("loginerrormessage", message);
+		       // request.getRequestDispatcher("/NewFile.jsp").forward(request, response);
 		}
 		
 	
@@ -87,13 +102,15 @@ public static void authentication(String name, String password){
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return message;
+		
 	}
 	
 		
 	
 	
 	
-	
+
 
 
 

@@ -53,7 +53,21 @@ public class LoginServlet extends HttpServlet {
 		     System.out.println(password);
 		     
 		     //Login obj = new Login();
-		     Login.authentication(username,password);
+		     String loginmsg =Login.authentication(username,password);
+		     System.out.println(loginmsg);
+		     if(loginmsg=="loginfail")
+		     {
+		    	 String message = null;
+			     
+
+			     
+		          message = "You are not the valid user...";
+		        
+		     
+		     
+		     request.setAttribute("loginerrormessage", message);
+		     request.getRequestDispatcher("/login.jsp").forward(request, response);
+		     }
 		     System.out.println("world");
 		     
 		     //HttpSession session = request.getSession(true);	    

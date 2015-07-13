@@ -26,7 +26,9 @@ Header Image
 <center><font size="+2">Login</font></center>
 
 <br/>
-<center><label id="loginmsg" style="width:100%;font-size:20px" class="formlabel"></label></center>
+<center><label id="loginmsg" style="width:100%; background-color: #DCDCDC;"class="formlabel"><%if(request.getAttribute("loginerrormessage") != null){ %>
+<h3><%= request.getAttribute("loginerrormessage")%></h3> 
+<% } %></label></center>
 <form method="post" action="LoginServlet">
 <table class="table-responsive" align="center" >
 <tr>
