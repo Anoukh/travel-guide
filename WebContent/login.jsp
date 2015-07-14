@@ -58,7 +58,7 @@ Header Image
 <center><font size="+2"> Sign up</font></center>
 <br/>
 <center><label id="signupmsg" style="width:100%;font-size:20px" class="formlabel"></label></center>
-
+<form action="SignupServlet" method="post">
 <table class="table-responsive" align="center" >
 <tr>
 <td width="50%" class="span12" style="color:#CDCDCD; font-size:20px;">User Name</td>
@@ -93,10 +93,11 @@ Header Image
 <td></td>
 <td><label class="span6"></label>
 
-<button type="button"  style="float:right "  class="btn btn-success btn-lg span12 " onClick="">Sign Up</button>
+<button type="submit"  style="float:right "  class="btn btn-success btn-lg span12 ">Sign Up</button>
 </td>
 </tr>
 </table>
+</form>
 <br/>
 </div>
 
