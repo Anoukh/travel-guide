@@ -79,7 +79,7 @@ try{
 
 			}
 			
-				
+		
 				
 		 //BasicDBObject searchQuery = new BasicDBObject();
 		//	List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
@@ -125,5 +125,43 @@ try{
 		}
 
 //return "hi";
-}	
+}
+
+
+public static void checkplace(String placetype,String placename,String placecity){
+
+	
+	DB db;
+	try{
+	DbConnection obj = new DbConnection();
+	db = obj.dbCon();
+	
+	DBCollection table = db.getCollection("place");
+	
+	 BasicDBObject searchplaceavb = new BasicDBObject();
+	List<BasicDBObject> plavbcheckobj = new ArrayList<BasicDBObject>();
+		
+		
+		
+		plavbcheckobj.add(new BasicDBObject("placename", placename));
+		plavbcheckobj.add(new BasicDBObject("placetype", placetype));
+		plavbcheckobj.add(new BasicDBObject("placecity", placecity));
+		searchplaceavb.put("$and", plavbcheckobj);
+		DBCursor cursor = table.find(searchplaceavb);
+		//cursor.hasNext()
+		
+		if(cursor.hasNext()){
+			System.out.println("Already included Place");
+		}	
+		
+	}
+	
+	catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+
+
 }
