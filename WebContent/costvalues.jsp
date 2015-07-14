@@ -57,7 +57,7 @@ Header
 <button type="submit" style="float:right" class="btn btn-lg btn-primary ">Enter</button>
 </article>
 <article class="span8"></article>
-												</br>
+  												</br>
 </section>
 </div>
 
