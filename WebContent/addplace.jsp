@@ -20,6 +20,16 @@
 Header Image
 
 </div>
+<script>
+function showhideplchargediv(placetype){
+	if(placetype=="Hotel" || placetype=="Restaurant"){
+		$("#chargediv").show();
+	}
+	else{
+		$("#chargediv").hide();
+	}
+}
+</script>
 <font size="+1" >
 
 <form action="AddPlaceServlet" method="post">
@@ -29,7 +39,7 @@ Header Image
 <section class="span12">
 <aside class="span2">Place Type</aside>
 <article class="span6">
-<select name="placetype" id="placetype" onFocus="" onChange="">
+<select name="placetype" id="placetype" onFocus="showhideplchargediv(this.value);" onChange="showhideplchargediv(this.value);">
 <option value="Hotel">Hotel</option>
 <option value="Restaurant">Restaurant</option>
 <option value="Leisure">Leisure</option>

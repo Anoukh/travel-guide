@@ -27,11 +27,11 @@ Header Image
 <aside class="span8"><input style="font-size:36px" placeholder="Place Name" type="text" name="placename" id="placename" class="span12" onKeyUp="" readonly/></aside>
 <article class="span4">
 <span class="star-rating">
-  <input type="radio" name="rating" value="1"><i></i>
-  <input type="radio" name="rating" value="2"><i></i>
-  <input type="radio" name="rating" value="3"><i></i>
-  <input type="radio" name="rating" value="4"><i></i>
-  <input type="radio" name="rating" value="5"><i></i>
+  <input type="radio" name="rating" value="1" disabled='disabled'><i></i>
+  <input type="radio" name="rating" value="2" disabled='disabled'><i></i>
+  <input type="radio" name="rating" value="3" disabled='disabled'><i></i>
+  <input type="radio" name="rating" value="4" disabled='disabled'><i></i>
+  <input type="radio" name="rating" value="5" disabled='disabled'><i></i>
 </span>
 
 </article>
