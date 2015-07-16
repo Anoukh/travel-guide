@@ -12,9 +12,9 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 public class Signup {
-	public void signup(String name, String password,String useremail){
+	public String signup(String name, String password,String useremail){
 		System.out.println("signing up");
-		
+		String message;
 		DB db;
 	
 		try{
@@ -33,16 +33,21 @@ public class Signup {
 		searchQuery.put("$and", obj1);
 		DBCursor cursor = table.find(searchQuery);
 		//cursor.hasNext()
-		if(cursor.hasNext()) System.out.println(name+" already exists");
+		if(cursor.hasNext()) {
+			message = "exists";
+			System.out.println(message);
+		}
 		
+		else{
+		DBObject insertQuery = new BasicDBObject();
 		
-		BasicDBObject insertQuery = new BasicDBObject();
-		List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
-		obj2.add(new BasicDBObject("name", name));
-		obj2.add(new BasicDBObject("password", password));
-		obj2.add(new BasicDBObject("email", useremail));
-		table.insert(insertQuery);
+		insertQuery.put("name", name);
+		insertQuery.put("password", password);
+		insertQuery.put("email", useremail);
 		
+		List<DBObject> obj2 = new ArrayList<>();
+		obj2.add(insertQuery);
+		table.insert(obj2);
 		
 		User userdata = new User();
 		userdata.setUsername(name);
@@ -50,14 +55,16 @@ public class Signup {
 		userdata.setEmail(useremail);
 		userdata.setUser_Level("User");
 			
-			
-		System.out.println("signed up");
-			
+		message = "Signed up";	
+		System.out.println(message);
+		}	
 		
 		
 		}catch (Exception e) {
+			message = "dberror";
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return message;
 	}
 }

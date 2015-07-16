@@ -50,8 +50,24 @@ public class SignupServlet extends HttpServlet {
 		     System.out.println("hello");
 		     
 		     Signup obj = new Signup();
-		     obj.signup(username,password,email);
+		     String signupmsg = obj.signup(username,password,email);
 		     
+		     System.out.println(signupmsg);
+		     String message = null;
+		     if(signupmsg=="exists")
+		     {
+		    	 			     
+		    	 message = username+" already exists";
+		     }
+		     else if(signupmsg=="dberror"){
+		    	
+			     message = "Error occured while connecting to the database";
+		     }
+		     else message = signupmsg;
+		     request.setAttribute("signuperrormessage", message);
+		     request.getRequestDispatcher("/login.jsp").forward(request, response);
+		     
+		   
 		     System.out.println("world");
 		     
 		     //HttpSession session = request.getSession(true);	    

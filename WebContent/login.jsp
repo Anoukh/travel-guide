@@ -57,7 +57,9 @@ Header Image
 <div style="float:left; width:60% ; background:rgba(14,77,85,0.6) " class="roundcorner">
 <center><font size="+2"> Sign up</font></center>
 <br/>
-<center><label id="signupmsg" style="width:100%;font-size:20px" class="formlabel"></label></center>
+<center><label id="signupmsg" style="color:#CDCDCD;width:100%;font-size:20px" class="formlabel"><%if(request.getAttribute("signuperrormessage") != null){ %>
+<h3><%= request.getAttribute("signuperrormessage")%></h3> 
+<% } %></label></center>
 <form action="SignupServlet" method="post">
 <table class="table-responsive" align="center" >
 <tr>
