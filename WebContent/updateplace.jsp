@@ -18,6 +18,16 @@
 Header Image
 
 </div>
+<script>
+function showhideplchargediv(placetype){
+	if(placetype=="Hotel" || placetype=="Restaurant"){
+		$("#chargediv").show();
+	}
+	else{
+		$("#chargediv").hide();
+	}
+}
+</script>
 <font size="+1">
 <form action="" method="post">
 
@@ -26,7 +36,7 @@ Header Image
 <section class="span12">
 <aside class="span2">Place Type</aside>
 <article class="span6">
-<select name="placetype" id="placetype" onFocus="" onChange="">
+<select name="placetype" id="placetype" onFocus="showhideplchargediv(this.value);" onChange="showhideplchargediv(this.value);">
 <option value="Hotel">Hotel</option>
 <option value="Restaurant">Restaurant</option>
 <option value="Leisure">Leisure</option>
@@ -42,11 +52,15 @@ Header Image
 <div class="row-fluid">
 <section class="span12">
 <aside class="span2">Place Name</aside>
-<article class="span6">
+<article class="span5">
 <input type="text" name="placename" id="placename" onKeyUp=""/>
 
 </article>
-<article class="span4"></article>
+<article class="span1">
+<button type="button" style="float:right" class="btn btn-lg btn-primary ">Select</button>
+</article>
+<article class ="span4">
+</article>
 												</br>
 </section>
 </div>
