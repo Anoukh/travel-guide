@@ -41,14 +41,39 @@ Search Bar
 												</br>
 </section>
 </div>
-
+<script type="text/javascript">
+function suggestplace(placetype,name){
+	//window.alert("hi");
+	$.ajax({
+        type: "POST",
+        url: 'AutoComPlaceServlet',
+        data:  { placetype : placetype , placename :  name},
+        success: function(dt)
+        {
+        	// var options = '';
+        	window.alert(dt);
+var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	    options += '<option value="Hi" />';
+        	    window.alert(options);
+        	    document.getElementById("places").innerHTML= dt;
+        	
+        //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });	
+	
+}
+</script>
 <div class="gap0"></div>
 
 <div class="row-fluid">
 <section class="span12">
 <aside class="span4">Name</aside>
 <article class="span8">
-<input type="text" name="placename" id="placename" class="span12"/>
+<input list="places" name="placename" id="placename" class="span12" onkeyup="suggestplace(document.getElementById('placetype').value,this.value);"/>
+<datalist id="places" >
+  
+</datalist>
 </article>
 
 												</br>
