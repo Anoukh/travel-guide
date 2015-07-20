@@ -31,14 +31,14 @@ function showhideplchargediv(placetype){
 }
 </script>
 <font size="+1" >
-
-<form action="AddPlaceServlet" method="post" enctype="multipart/form-data">
+<div class ="span8" style="float: left">
+<form action="AddPlaceServlet" method="post">
 
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2">Place Type</aside>
-<article class="span6">
+<aside class="span4">Place Type</aside>
+<article class="span8">
 <select name="placetype" id="placetype" onFocus="showhideplchargediv(this.value);" onChange="showhideplchargediv(this.value);">
 <option value="Hotel">Hotel</option>
 <option value="Restaurant">Restaurant</option>
@@ -46,7 +46,7 @@ function showhideplchargediv(placetype){
 <option value="Religious">Religious</option>
 </select>
 </article>
-<article class="span4"></article>
+
 												</br>
 </section>
 </div>
@@ -54,12 +54,12 @@ function showhideplchargediv(placetype){
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2">Place Name</aside>
-<article class="span6">
+<aside class="span4">Place Name</aside>
+<article class="span8">
 <input type="text" name="placename" id="placename" onKeyUp=""/>
 
 </article>
-<article class="span4"></article>
+
 												</br>
 </section>
 </div>
@@ -67,12 +67,12 @@ function showhideplchargediv(placetype){
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2">City</aside>
-<article class="span6">
+<aside class="span4">City</aside>
+<article class="span8">
 <input type="text" name="placecity" id="placecity" />
 
 </article>
-<article class="span4"></article>
+
 												</br>
 </section>
 </div>
@@ -80,43 +80,41 @@ function showhideplchargediv(placetype){
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2">Description</aside>
-<article class="span6">
+<aside class="span4">Description</aside>
+<article class="span8">
 <textarea name="placedes" id="placedes" rows="2" class="span12"></textarea>
 </article>
-<article class="span4"></article>
+
 												</br>
 </section>
 </div>
 
-<div class="gap0"></div>
-<div class="row-fluid">
-<section class="span12">
-<aside class="span2">Add Image</aside>
-<article class="span6">
-<input type="file" name="placeimg" id="placeimg" />
-</article>
-<article class="span4"></article>
-												</br>
-</section>
-</div>
+
 
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2">Location</aside>
-<article class="span6">
-<div id="map" class="span12" style="height:500px" ></div>
-</article>
-<article class="span4"><table> 
+<aside class="span4">
+<table> 
 <tr >
-<td class="span12"> <input type="text" id="lat" name="lat" readonly="yes"/></td>
+<td class="span12">
+Location
+</td>
+
 </tr>
 <tr class="gap0"></tr>
 <tr >
-<td class="span12"> <input type="text" id="lng"  name="lng" readonly="yes"/></td>
+<td class="span12"> <input type="text" id="lat" name="lat" readonly/></td>
 </tr>
-</table></article>
+<tr class="gap0"></tr>
+<tr >
+<td class="span12"> <input type="text" id="lng"  name="lng" readonly/></td>
+</tr>
+</table></aside>
+<article class="span8">
+<div id="map" class="span12" style="height:500px" ></div>
+</article>
+
 												</br>
 </section>
 </div>
@@ -124,8 +122,8 @@ function showhideplchargediv(placetype){
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2">Rating</aside>
-<article class="span6">
+<aside class="span4">Rating</aside>
+<article class="span8">
 <span class="star-rating">
   <input type="radio" name="rating" value="1"><i></i>
   <input type="radio" name="rating" value="2"><i></i>
@@ -134,7 +132,7 @@ function showhideplchargediv(placetype){
   <input type="radio" name="rating" value="5"><i></i>
 </span>
 </article>
-<article class="span4"></article>
+
 												</br>
 </section>
 </div>
@@ -142,12 +140,12 @@ function showhideplchargediv(placetype){
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2">Charges</aside>
-<article class="span6">
+<aside class="span4">Charges</aside>
+<article class="span8">
 <input type="text" name="placecharge" id="placecharge" />
 
 </article>
-<article class="span4"></article>
+
 												</br>
 </section>
 </div>
@@ -157,16 +155,47 @@ function showhideplchargediv(placetype){
 
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2"></aside>
-<article class="span6">
+<aside class="span4"></aside>
+<article class="span8">
 <button type="submit" style="float:right" class="btn btn-lg btn-success ">Suggest</button>
 </article>
-<article class="span4"></article>
+
 												</br>
 </section>
 </div>
 
 </form>
+</div>
+
+<div class="span4" style="float: left">
+<form action="AddPlaceImageServlet" method="post" enctype="multipart/form-data">
+
+<table>
+
+<tr class="gap0"></tr>
+<tr >
+<td class="span12">
+
+Add Image
+</td>
+</tr>
+<tr class="gap0"></tr>
+<tr >
+<td class="span12">
+<input type="file" name="placeimg" id="placeimg" />
+</td>
+</tr>
+<tr class="gap0"></tr>
+<tr>
+<td class="span12">
+<button type="submit" class="btn btn-danger btn-lg span12">Verify Image</button>
+</td>
+</tr>
+</table>
+</form>
+
+</div>
+
 </font>
 </div>
 </div>

@@ -11,7 +11,7 @@ public class PlaceData {
 	private String placecharge;
 	private String lastupdate;
 	private String acceptYN;
-	private String imagepath;
+	private static String imagepath;
 	
 	
 	public void setPlacetype(String placetype){

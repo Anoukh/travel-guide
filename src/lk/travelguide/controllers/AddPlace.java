@@ -63,7 +63,7 @@ try{
 		 plinsertobj.put("lng",lng);
 		 plinsertobj.put("placerating",rating);
 		 plinsertobj.put("noofrates",1);
-		 
+		 plinsertobj.put("placeimagepath",placeimg);
 		 plinsertobj.put("placecharge",placecharge);
 		 plinsertobj.put("lastupdate",date);
 		 plinsertobj.put("acceptYN","N");
