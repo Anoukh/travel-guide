@@ -70,18 +70,18 @@ public class AutoComPlace {
 			DBObject cs =  cursor.next();
 			pltype = (String)cs.get("placetype");
 			
-		//if(pltype == "Hotel"){	
+		if(pltype.equals(placetype)){	
 			places[i] = (String)cs.get("placename");
 			System.out.println((String)cs.get("placename"));
 			//places[i] ="aaa";
 			System.out.println(places[i]);
 			System.out.println((String)cs.get("placetype"));
 			i++;
-		//}
-		//else{
-		//	cs.get("placetype");	
+		}
+		else{
+			cs.get("placetype");	
 		//System.out.println(places[0]);
-		//}
+		}
 		}
 		
 		
