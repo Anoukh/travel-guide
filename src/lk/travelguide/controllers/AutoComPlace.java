@@ -12,79 +12,40 @@ import com.mongodb.DBObject;
 
 public class AutoComPlace {
 	
-	public String[] autocompleteplace(String placetype,String placename){
-		//String places [] = null;
-		String[] places = new String[5];
-		 int i =0;
-		boolean auth ;
-		DB db;
-		String message = null;
-		/*
-		try {
-			mongo = new MongoClient( "localhost" , 27017 );
+	public static String[] autocompleteplace(String placetype,String placename){
 		
-		DB db = mongo.getDB("test");*/
+		System.out.println(placetype + " " + placename);
+		
+		String[] places = new String[5];
+				
+		DB db;
+				
 		try{
 		
-			//System.err.println(placetype);
-			
+		int i =0;	
 		DbConnection obj = new DbConnection();
 		db = obj.dbCon();
 		
 		DBCollection table = db.getCollection("place");
 		
-		BasicDBObject searchQuery = new BasicDBObject();
-		List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
-		List<BasicDBObject> obj4 = new ArrayList<BasicDBObject>();
 		BasicDBObject obj3 = new BasicDBObject();
 		obj3.put("placename",new BasicDBObject("$regex", placename).append("$options", "i"));
-		//BasicDBObject obj4 = new BasicDBObject();
+		obj3.put("placetype",new BasicDBObject("$regex", placetype).append("$options", "i"));
 		
-		//BasicDBObject fields = new BasicDBObject("placetype", placetype);
-		
-		obj2.add(new BasicDBObject("placetype", placetype));
-		
-		//obj4.putAll((Map) obj3);
-		//obj3.put("name", 	new BasicDBObject("$regex", "Mky.*-[1-3]").append("$options", "i"));
-		
-		//obj4.add(obj2);
-		obj4.add(obj3);
-		
-		//obj2.add(new BasicDBObject("placename", placename));
-		
-		//searchQuery.put("$and", obj4);
-		//searchQuery.put("$and", obj3);
-		
-		//DBCursor cursor = table.find(searchQuery);
 		DBCursor cursor = table.find(obj3).limit(5);
-		//DBCursor cr = table.find(obj3).limit(5);
-		//cursor.hasNext()
 		
-		//System.out.println(cursor);
-		String pltype;
-	//	if(cursor.hasNext())
-		while(cursor.hasNext()){
-			//i++;
-			//i--;
-			//System.out.println("start");
-			DBObject cs =  cursor.next();
-			pltype = (String)cs.get("placetype");
+		if(cursor.hasNext()){
 			
-		if(pltype.equals(placetype)){	
-			places[i] = (String)cs.get("placename");
-			System.out.println((String)cs.get("placename"));
-			//places[i] ="aaa";
-			System.out.println(places[i]);
-			System.out.println((String)cs.get("placetype"));
-			i++;
-		}
-		else{
-			cs.get("placetype");	
-		//System.out.println(places[0]);
-		}
+			while(cursor.hasNext()){
+				DBObject cs =  cursor.next();
+				places[i] = (String)cs.get("placename");
+				System.out.println(places[i]+ "*");
+				i++;
+			}
 		}
 		
-		
+		else System.out.println("no cursor");
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();	
@@ -93,5 +54,14 @@ public class AutoComPlace {
 		
 		return places;
 	}
+	
+	/*
+	public static void main(String[] args){
+		String place[]=  new String[5];
+		place = autocompleteplace("Hotel","a");
+		for(int i=0;i<5;i++){
+			System.out.println(place[i]);
+		}
+	} */
 
 }
