@@ -44,6 +44,7 @@ public class Signup {
 		insertQuery.put("name", name);
 		insertQuery.put("password", password);
 		insertQuery.put("email", useremail);
+		insertQuery.put("userlevel", "User");
 		
 		List<DBObject> obj2 = new ArrayList<>();
 		obj2.add(insertQuery);

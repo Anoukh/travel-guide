@@ -48,13 +48,39 @@ function showhideplchargediv(placetype){
 </section>
 </div>
 
+<script type="text/javascript">
+function suggestplace(placetype,name){
+	//window.alert("hi");
+	$.ajax({
+        type: "POST",
+        url: 'AutoComPlaceServlet',
+        data:  { placetype : placetype , placename :  name},
+        success: function(dt)
+        {
+        	// var options = '';
+        	window.alert(dt);
+var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	    options += '<option value="Hi" />';
+        	    window.alert(options);
+        	    document.getElementById("places").innerHTML= dt;
+        	
+        //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });	
+	
+}
+</script>
+
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
 <aside class="span2">Place Name</aside>
 <article class="span5">
-<input type="text" name="placename" id="placename" onKeyUp=""/>
-
+<input list="places" name="placename" id="placename" onKeyUp="suggestplace(document.getElementById('placetype').value,this.value);"/>
+<datalist id="places" >
+  
+</datalist>
 </article>
 <article class="span1">
 <button type="button" style="float:right" class="btn btn-lg btn-primary ">Select</button>

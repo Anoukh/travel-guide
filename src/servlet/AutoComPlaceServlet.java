@@ -41,7 +41,7 @@ public class AutoComPlaceServlet extends HttpServlet {
 		String placetype =request.getParameter("placetype");
 		String placename =request.getParameter("placename");
 		AutoComPlace pl = new AutoComPlace();
-		String places[] = pl.autocompleteplace(placetype, placename);
+		String places[] = pl.autocompleteplace("autocomplete",placetype, placename);
 		System.out.println(placetype);
 		for(i=0;i<places.length;i++){
 	 response.getWriter().write("<option value= '" +places[i]+"'>"); 

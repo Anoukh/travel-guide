@@ -22,11 +22,13 @@ Header Image
 <div style="float:left;width: 40% " >
 <font size="+1">
 
+
+
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
 <aside class="span2"><button class="btn btn-lg btn-success" onClick="codeAddress();">Show Location </button></aside>
-<article class="span4"><input  placeholder="Start Place" type="text" name="pac-input" id="pac-input" class="span8" style="font-size:18px" onKeyUp="" />
+<article class="span4"><input  placeholder="Start Place" type="text" name="pac-input" id="pac-input" class="span8" style="font-size:18px" onKeyUp=""/>
 </article>
 <article class="span2"></article>
 <article class="span2"></article>
@@ -45,13 +47,39 @@ Header Image
 </section>
 </div>
 
+<script type="text/javascript">
+function startplace(name){
+	//window.alert("hi");
+	$.ajax({
+        type: "POST",
+        url: 'AutoComPlaceServlet',
+        data:  { placetype : "" , placename :  name},
+        success: function(dt)
+        {
+        	// var options = '';
+        	window.alert(dt);
+var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	    options += '<option value="Hi" />';
+        	    window.alert(options);
+        	    document.getElementById("places").innerHTML= dt;
+        	
+        //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });	
+	
+}
+</script>
+
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
 <aside class="span6">Destination Place</aside>
-<article class="span6"><input  placeholder="Select" type="text" name="travelplacename" id="travelplacename" class="span12" onKeyUp="" />
+<article class="span6"><input  placeholder="Select" list="places" name="travelplacename" id="travelplacename" class="span12" onKeyUp="startplace(this.value);" />
 </article>
+<datalist id = "places">
 
+</datalist>
 												</br>
 </section>
 </div>

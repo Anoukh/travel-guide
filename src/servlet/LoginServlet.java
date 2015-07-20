@@ -7,8 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import lk.travelguide.controllers.Login;
+import lk.travelguide.models.User;
 
 /**
  * Servlet implementation class LoginServlet
@@ -55,18 +57,29 @@ public class LoginServlet extends HttpServlet {
 		     //Login obj = new Login();
 		     String loginmsg =Login.authentication(username,password);
 		     System.out.println(loginmsg);
+		     
+		     User user = new User();
+		     String userlevel = user.getUser_Level();
+		     
+		     HttpSession levelsession = request.getSession();
+		     levelsession.setAttribute("userlevel",userlevel);
+		     
 		     if(loginmsg=="loginfail")
 		     {
 		    	 String message = null;
 			     
 
 			     
-		          message = "You are not the valid user...";
+		          message = "You are not a valid user...";
 		        
 		     
 		     
 		     request.setAttribute("loginerrormessage", message);
 		     request.getRequestDispatcher("/login.jsp").forward(request, response);
+		     }
+		     
+		     else if(loginmsg == "loginsuccess"){
+		    	 response.sendRedirect("home.jsp");
 		     }
 		     System.out.println("world");
 		     

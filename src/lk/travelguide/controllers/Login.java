@@ -74,7 +74,7 @@ public static String authentication(String name, String password){
 			userdata.setUser_Level(user_level);
 			userdata.setRequest_Accept(request_accept);
 			
-			//System.out.println("authenticated");    
+			System.out.println(user_level);    
 			message ="loginsuccess";
 			
 		}

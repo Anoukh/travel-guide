@@ -35,7 +35,7 @@ Header Image
 <section class="span12">
 <aside class="span2">Place Type</aside>
 <article class="span6">
-<select name="placetype" id="placetype" onFocus="" onChange="">
+<select name="placetype" id="placetype" onFocus="acceptplace(document.getElementById('placetype').value);"  onChange="">
 <option value="Hotel">Hotel</option>
 <option value="Restaurant">Restaurant</option>
 <option value="Leisure">Leisure</option>
@@ -47,6 +47,30 @@ Header Image
 </section>
 </div>
 
+<script type="text/javascript">
+function acceptplace(placetype){
+	//window.alert("hi");
+	$.ajax({
+        type: "POST",
+        url: 'DropDownServlet',
+        data:  { placetype : placetype },
+        success: function(dt)
+        {
+        	// var options = '';
+        	window.alert(dt);
+var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	    options += '<option value="Hi" />';
+        	    window.alert(options);
+        	    document.getElementById("placename").innerHTML= dt;
+        	
+        //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });	
+	
+}
+</script>
+
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
@@ -55,6 +79,9 @@ Header Image
 <select name="placename" id="placename" onFocus="" onChange="">
 
 </select>
+<datalist id="places" >
+  
+</datalist>
 </article>
 <article class="span4"></article>
 												</br>

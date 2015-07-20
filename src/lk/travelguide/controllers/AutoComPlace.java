@@ -12,16 +12,15 @@ import com.mongodb.DBObject;
 
 public class AutoComPlace {
 	
-	public static String[] autocompleteplace(String placetype,String placename){
+	public static String[] autocompleteplace(String select,String placetype,String placename){
 		
 		System.out.println(placetype + " " + placename);
-		
-		String[] places = new String[5];
-				
+		String[] places=null;			
 		DB db;
 				
 		try{
 		
+		DBCursor cursor=null;
 		int i =0;	
 		DbConnection obj = new DbConnection();
 		db = obj.dbCon();
@@ -29,10 +28,22 @@ public class AutoComPlace {
 		DBCollection table = db.getCollection("place");
 		
 		BasicDBObject obj3 = new BasicDBObject();
-		obj3.put("placename",new BasicDBObject("$regex", placename).append("$options", "i"));
-		obj3.put("placetype",new BasicDBObject("$regex", placetype).append("$options", "i"));
 		
-		DBCursor cursor = table.find(obj3).limit(5);
+		if(select == "autocomplete"){
+			obj3.put("placename",new BasicDBObject("$regex", placename).append("$options", "i"));
+			obj3.put("placetype",new BasicDBObject("$regex", placetype).append("$options", "i"));
+			cursor = table.find(obj3).limit(5);
+		}
+		
+		else if(select == "dropdown"){
+			obj3.put("accepted",new BasicDBObject("$regex", "No").append("$options", "i"));
+			obj3.put("placetype",new BasicDBObject("$regex", placetype).append("$options", "i"));
+			cursor = table.find(obj3);
+		}
+		
+		
+		
+		places = new String[cursor.count()];
 		
 		if(cursor.hasNext()){
 			
@@ -49,7 +60,7 @@ public class AutoComPlace {
 		}
 		catch(Exception e){
 			e.printStackTrace();	
-			
+		
 		}
 		
 		return places;
