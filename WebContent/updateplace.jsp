@@ -29,7 +29,7 @@ function showhideplchargediv(placetype){
 }
 </script>
 <font size="+1">
-<form action="" method="post">
+<form action="UpdataPlaceServlet" method="post">
 
 <div class="gap0"></div>
 <div class="row-fluid">
@@ -70,6 +70,31 @@ var options ='';
     });	
 	
 }
+
+function updateplacedata(){
+	//window.alert("hi");
+	var placetype =document.getElementById("placetype").value;
+	//window.alert("hi2");
+	var placename =document.getElementById("placename").value;
+	//window.alert("hi2");
+	$.ajax({
+        type: "POST",
+        url: 'UpdatePlaceDataServlet',
+        data:  { placetype : placetype , placename :  placename},
+        dataType: 'json',
+        success: function(dat)
+        {
+        	// var options = '';
+        	//window.alert(dat.pldes);
+
+        	    document.getElementById("placedes").innerHTML= dat.pldes;
+        	
+        	document.getElementById("placecharge").value = dat.plcharge ;
+        }
+    });		
+	
+}
+
 </script>
 
 <div class="gap0"></div>
@@ -83,7 +108,7 @@ var options ='';
 </datalist>
 </article>
 <article class="span1">
-<button type="button" style="float:right" class="btn btn-lg btn-primary ">Select</button>
+<button type="button" style="float:right" class="btn btn-lg btn-primary " onClick= "updateplacedata();">Select</button>
 </article>
 <article class ="span4">
 </article>
