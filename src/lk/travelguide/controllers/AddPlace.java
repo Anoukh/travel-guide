@@ -17,7 +17,7 @@ import com.mongodb.DBObject;
 public class AddPlace {
 
 	
-public void addplaces(String placetype,String placename,String placecity,String placedes,String placeimg,float lat,float lng,String rating,String placecharge){
+public String addplaces(String placetype,String placename,String placecity,String placedes,String placeimg,float lat,float lng,String rating,String placecharge){
 	
 	//return "Hi";
 	boolean auth ;
@@ -124,7 +124,7 @@ try{
 			e.printStackTrace();
 		}
 
-//return "hi";
+return "Successfully uploaded";
 }
 
 

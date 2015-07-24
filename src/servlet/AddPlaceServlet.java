@@ -2,13 +2,16 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -21,10 +24,11 @@ import lk.travelguide.models.PlaceData;
  * Servlet implementation class AddPlaceServlet
  */
 @WebServlet("/AddPlaceServlet")
+@MultipartConfig(maxFileSize = 16177215, location = "D:\\TravelGuideImages\\")
 public class AddPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	 public final String UPLOAD_DIRECTORY = "E:/TravelGuideImages";
+//	 public final String UPLOAD_DIRECTORY = "E:/TravelGuideImages";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,7 +44,9 @@ public class AddPlaceServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//String placeimg =null;
 		//String rating =null;
-		
+		 String adplresult;
+	
+		//location = request.getParameter("placetype");
 		System.out.println("print1");
 		
 		 String placetype = (request.getParameter("placetype"));
@@ -50,7 +56,7 @@ public class AddPlaceServlet extends HttpServlet {
 	     
 	     PlaceData pldata =new PlaceData();
 	     
-	     String placeimg = (pldata.getImagepath());
+	     String placeimg = "D:/TravelGuideImages/"+placetype+"/"+placename+".jpg";
 	     String lt = (request.getParameter("lat"));
 	   //  System.out.println(request.getParameter("lat"));
 	    float  lat= Float.parseFloat(lt);
@@ -61,9 +67,38 @@ public class AddPlaceServlet extends HttpServlet {
 	   
 	     AddPlace adpl =new AddPlace();
 	     System.out.println("print2");
-	     //String adplresult =
+	      adplresult =
 		adpl.addplaces(placetype, placename, placecity, placedes, placeimg, lat, lng, rating, placecharge);
 		
+		InputStream inputStream = null;
+		Part filePart = request.getPart("photo");
+		
+		try{
+			if (filePart != null) {
+				// prints out some information for debugging
+			//	System.out.println(name1);
+				System.out.println(filePart.getName());
+				System.out.println(filePart.getSize());
+				System.out.println(filePart.getContentType());
+
+				// File outputFile = new File(, "firstFile.txt"); 
+				filePart.write("photo");
+				// obtains input stream of the upload file
+				//inputStream = filePart.getInputStream();
+				
+				File oldfile =new File("D:\\TravelGuideImages\\photo");
+				File newfile =new File("D:\\TravelGuideImages\\"+placetype+"\\"+placename+".jpg");
+				oldfile.renameTo(newfile);
+				
+			}else{
+				adplresult ="Photo Upload failed";
+			}
+	}catch(Exception e){
+		System.out.println(e);
+	}
+		
+		request.setAttribute("addplacemsg", adplresult);
+	     request.getRequestDispatcher("/addplace.jsp").forward(request, response);	
 	}
 
 }
