@@ -43,7 +43,7 @@ public class ViewDetailsServlet extends HttpServlet {
 		for(int i=0;i<places.length;i++){
 			//System.out.println(places[i]+"***");
 			
-			response.getWriter().write("<tr><td>"+placetype+"</td><td>"+places[i]+"</td><td><a href='ViewPlaceServlet?place=$places[i]'>view</a></td></tr>"); 
+			response.getWriter().write("<tr><td>"+placetype+"</td><td>"+places[i]+"</td><td><a href='ViewPlaceServlet?place="+places[i]+"&type="+placetype+"'>view</a></td></tr>"); 
 		}
 	}
 

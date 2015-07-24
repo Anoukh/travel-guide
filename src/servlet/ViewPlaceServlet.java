@@ -1,11 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import lk.travelguide.controllers.ViewPlaceData;
+import lk.travelguide.models.PlaceData;
 
 /**
  * Servlet implementation class ViewPlaceServlet
@@ -27,8 +31,14 @@ public class ViewPlaceServlet extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String place = (String)request.getAttribute("place"); 
-		System.out.println("*"+place);
+		String place = (String)request.getParameter("place");
+		String placetype = (String)request.getParameter("type");
+		System.out.println("*"+place+placetype);
+		
+		PlaceData pdobj;
+		ViewPlaceData vpdobj = new ViewPlaceData();
+		pdobj = vpdobj.retrivePlaceData(place);
+		
 	}
 
 }
