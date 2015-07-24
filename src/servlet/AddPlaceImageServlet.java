@@ -1,8 +1,10 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
  
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +17,7 @@ import javax.servlet.http.Part;
  * Servlet implementation class AddPlaceImageServlet
  */
 @WebServlet("/AddPlaceImageServlet")
-@MultipartConfig(maxFileSize = 16177215, location = "D:\\External Projects\\Hapache\\travel-guide\\WebContent\\images")
+@MultipartConfig(maxFileSize = 16177215, location = "D:\\TravelGuideImages")
 public class AddPlaceImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	/**
@@ -46,9 +48,15 @@ try{
 			System.out.println(filePart.getSize());
 			System.out.println(filePart.getContentType());
 
+			// File outputFile = new File(, "firstFile.txt"); 
 			filePart.write("photo");
 			// obtains input stream of the upload file
-			inputStream = filePart.getInputStream();
+			//inputStream = filePart.getInputStream();
+			
+			File oldfile =new File("D:\\TravelGuideImages\\photo");
+			File newfile =new File("D:\\TravelGuideImages\\photo.jpg");
+			oldfile.renameTo(newfile);
+			
 		}else{
 			System.out.println("Wrong");
 		}

@@ -29,7 +29,7 @@ function showhideplchargediv(placetype){
 }
 </script>
 <font size="+1">
-<form action="UpdataPlaceServlet" method="post">
+<form action="UpdataPlaceServlet" method="post" enctype="multipart/form-data">
 
 <div class="gap0"></div>
 <div class="row-fluid">

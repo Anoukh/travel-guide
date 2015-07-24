@@ -27,9 +27,13 @@
 					}
 				}
 			</script>
+			<center><label id="loginmsg" style="width:100%; background-color: #DCDCDC;"class="formlabel"><%if(request.getAttribute("addplacemsg") != null){ %>
+<h3><%= request.getAttribute("addplacemsg")%></h3> 
+<% } %></label></center>
 			<font size="+1">
 				<div class="span8" style="float: left">
-					<form action="AddPlaceServlet" method="post">
+					<form action="AddPlaceServlet" method="post"
+						enctype="multipart/form-data">
 
 						<div class="gap0"></div>
 						<div class="row-fluid">
@@ -69,6 +73,13 @@
 							</section>
 						</div>
 
+						<div class="gap0"></div>
+						<div class="row-fluid">
+							<section class="span12"> <aside class="span4">Add
+							Image</aside> <article class="span8"> <input type="file"
+								name="photo" id="photo" /> </article> </br>
+							</section>
+						</div>
 
 
 						<div class="gap0"></div>
@@ -133,6 +144,7 @@
 				</div>
 
 				<div class="span4" style="float: left">
+					<!--  
 					<form action="AddPlaceImageServlet" method="post" enctype="multipart/form-data">
 						<table>
 
@@ -157,7 +169,7 @@
 							</tr>
 						</table>
 					</form>
-
+-->
 				</div>
 
 			</font>

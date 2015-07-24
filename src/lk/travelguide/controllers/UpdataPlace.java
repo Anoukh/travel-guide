@@ -25,8 +25,6 @@ public void updateplacedetails(String placetype,String placename,String placedes
 	
 	DBCollection table = db.getCollection("place");
 	
-	
-	
 	BasicDBObject searchQuery = new BasicDBObject().append("placename",placename)
 												.append("placetype", placetype);
 	List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
