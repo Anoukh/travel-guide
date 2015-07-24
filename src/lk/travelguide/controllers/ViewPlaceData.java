@@ -28,8 +28,8 @@ public class ViewPlaceData {
 		String placetype = (String)cs.get("placetype");
 		String placecity = (String)cs.get("placecity");
 		String placedes = (String)cs.get("placedes");
-		Float lat = (Float)cs.get("lat");
-		Float lng = (Float)cs.get("lng"); 
+		float lat = (float)cs.get("lat");
+		float lng = (float)cs.get("lng"); 
 		String placerating = (String)cs.get("placerating");
 		String placeimagepath = (String)cs.get("placeimagepath");
 		String placecharge= (String)cs.get("placecharge");

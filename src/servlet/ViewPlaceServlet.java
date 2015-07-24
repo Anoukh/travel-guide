@@ -39,6 +39,8 @@ public class ViewPlaceServlet extends HttpServlet {
 		ViewPlaceData vpdobj = new ViewPlaceData();
 		pdobj = vpdobj.retrivePlaceData(place);
 		
+		request.setAttribute("placename", pdobj.getPlacename());
+		request.getRequestDispatcher("/viewplace.jsp").forward(request, response);
 	}
 
 }

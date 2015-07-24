@@ -36,7 +36,7 @@ public class AutoComPlace {
 		}
 		
 		else if(select == "dropdown"){
-			obj3.put("accepted",new BasicDBObject("$regex", "No").append("$options", "i"));
+			obj3.put("acceptYN",new BasicDBObject("$regex", "N").append("$options", "i"));
 			obj3.put("placetype",new BasicDBObject("$regex", placetype).append("$options", "i"));
 			cursor = table.find(obj3);
 		}
