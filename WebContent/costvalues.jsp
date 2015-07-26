@@ -22,7 +22,7 @@ Header
 <div class="gap0"></div>
 
 <font size="+1">
-<form action="" method="post">
+<form action="CostValuesServlet" method="post">
 <div class="gap4"></div>
 <div class="row-fluid">
 <section class="span12">
