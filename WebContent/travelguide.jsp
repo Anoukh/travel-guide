@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html >
 <head>
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -69,6 +69,53 @@ var options ='';
     });	
 	
 }
+
+function travelguidesuggestplaces(){
+	//window.alert("hi");
+	relatedplaces();
+	relatedhotels();
+	relatedrestaurants();
+	
+}
+
+function relatedplaces(){
+	//window.alert("relatedplaces");
+	var travelplacename =document.getElementById("travelplacename").value;
+	//window.alert(travelplacename);
+	$.ajax({
+        type: "POST",
+        url: 'SuggestRelatedPlacesServlet',
+        data:  { placename :  travelplacename},
+        dataType: 'json',
+        success: function(dt)
+        {
+        	// var options = '';
+        	//window.alert("Returned");
+        	//var dd =dt.HotelList;
+        	
+        	//window.alert(dd);
+//var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	  //  options += '<option value="Hi" />';
+        	  //  window.alert(options);
+        	    document.getElementById("relatedhotelsuggestions").innerHTML= dt.HotelList;
+        	    document.getElementById("relatedrestaurantesuggestions").innerHTML= dt.RestList;
+        	    document.getElementById("relatedleisuresuggestions").innerHTML= dt.LeisureList;
+                
+        	    //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });	
+}
+
+function relatedhotels(){
+	
+		
+}
+
+function relatedrestaurants(){
+	
+	
+}
 </script>
 
 <div class="gap0"></div>
@@ -95,19 +142,50 @@ var options ='';
 </section>
 </div>
 
-<div id="relatedplacesdiv">
+<div class="gap0"></div>
+<div class="row-fluid">
+<section class="span12">
+<aside class="span6"></aside>
+<article class="span2">
+</article>
+<article class="span4"><button class="btn btn-lg btn-primary" style="float: right;" onclick="travelguidesuggestplaces();">Enter</button></article>
+												</br>
+</section>
+</div>
+
+
+<div id="relatedreligiousdiv">
 
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span6">Related Places</aside>
+<aside class="span6">Related Religious</aside>
 <article class="span6"></article>
 
 												</br>
 </section>
 </div>
 
-<div id="relatedplacesuggestions">
+<div id="relatedreligioussuggestions">
+</div>
+
+
+
+</div>
+
+<div id="relatedleisurediv">
+
+<div class="gap0"></div>
+<div class="row-fluid">
+<section class="span12">
+<aside class="span6">Related Leisure</aside>
+<article class="span6"></article>
+
+												</br>
+</section>
+</div>
+
+<div id="relatedleisuresuggestions">
 </div>
 
 
