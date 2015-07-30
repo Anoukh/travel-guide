@@ -5,13 +5,14 @@ public class PlaceData {
 	private String placename;
 	private String placecity;
 	private String placedes;
-	private float lat;
-	private float lng;
+	private Double lat;
+	private Double lng;
 	private String rating;
 	private String placecharge;
 	private String lastupdate;
 	private String acceptYN;
 	private static String imagepath;
+	private int noofrates;
 	
 	
 	public void setPlacetype(String placetype){
@@ -30,11 +31,11 @@ public class PlaceData {
 		this.placedes = placedes;
 	}
 	
-	public void setLatitude(float lat){
+	public void setLatitude(Double lat){
 		this.lat = lat;
 	}
 	
-	public void setLongitude(float lng){
+	public void setLongitude(Double lng){
 		this.lng = lng;
 	}
 	
@@ -58,6 +59,11 @@ public class PlaceData {
 		this.imagepath = imagepath;
 	}
 	
+	public void setNoofrates(int noofrates){
+		this.noofrates = noofrates;
+	}
+	
+	
 	public String getPlacetype(){
 		return placetype;
 	}
@@ -78,11 +84,11 @@ public class PlaceData {
 		return placecharge;
 	}
 	
-	public float getLatitude(){
+	public Double getLatitude(){
 		return lat;
 	}
 	
-	public float getLongitude(){
+	public Double getLongitude(){
 		return lng;
 	}
 	
@@ -100,6 +106,10 @@ public class PlaceData {
 	
 	public String getImagepath(){
 		return imagepath;
+	}
+	
+	public int getNoofrates(){
+		return noofrates;
 	}
 	
 }

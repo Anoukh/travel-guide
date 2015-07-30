@@ -40,6 +40,15 @@ public class ViewPlaceServlet extends HttpServlet {
 		pdobj = vpdobj.retrivePlaceData(place);
 		
 		request.setAttribute("placename", pdobj.getPlacename());
+		request.setAttribute("placetype", pdobj.getPlacetype());
+		request.setAttribute("placecity", pdobj.getPlacecity());
+		request.setAttribute("lat", pdobj.getLatitude());
+		request.setAttribute("lng", pdobj.getLongitude());
+		request.setAttribute("placedes", pdobj.getPlacedes());
+		request.setAttribute("rating", pdobj.getRating());
+		request.setAttribute("lastupdate", pdobj.getLastupdate());
+		request.setAttribute("imagepath", pdobj.getImagepath());
+		request.setAttribute("noofrates", pdobj.getNoofrates());
 		request.getRequestDispatcher("/viewplace.jsp").forward(request, response);
 	}
 
