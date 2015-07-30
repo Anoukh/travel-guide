@@ -59,11 +59,13 @@ public class SuggestRelatedPlacesServlet extends HttpServlet {
 				+ hotelsArray[i] + "'>" + hotelsArray[i] + "<br>";
 		}
 
+		
+		//String total2 = String.valueOf(total);
 		double[] hotelsArrayLngLat = sugrelplaces.getSugHotelsLonLat();
-		double[] ArrangedHotelLngLat = new double[sugrelplaces
-				.getSugHotelsLonLat().length];
+		//double[] ArrangedHotelLngLat = new double[sugrelplaces.getSugHotelsLonLat().length];
+		String ArrangedHotelLngLat="";
 		for (int i = 0; i < hotelsArrayLngLat.length; i++) {
-			ArrangedHotelLngLat[i] = hotelsArrayLngLat[i];
+			ArrangedHotelLngLat += "_"+String.valueOf(hotelsArrayLngLat[i]);
 		}
 
 		// System.out.println(ArrangedHotel[0]);
@@ -77,10 +79,10 @@ public class SuggestRelatedPlacesServlet extends HttpServlet {
 		}
 
 		double[] restsArrayLngLat = sugrelplaces.getSugRestsLonLat();
-		double[] ArrangedRestLngLat = new double[sugrelplaces
-				.getSugRestsLonLat().length];
+		//double[] ArrangedRestLngLat = new double[sugrelplaces.getSugRestsLonLat().length];
+		String ArrangedRestLngLat ="";
 		for (int i = 0; i < restsArrayLngLat.length; i++) {
-			ArrangedRestLngLat[i] = restsArrayLngLat[i];
+			ArrangedRestLngLat += "_"+String.valueOf(restsArrayLngLat[i]);
 		}
 
 		String[] leisureArray = sugrelplaces.getSuggestLeisure();
@@ -92,10 +94,10 @@ public class SuggestRelatedPlacesServlet extends HttpServlet {
 		}
 
 		double[] leisureArrayLngLat = sugrelplaces.getSugLeisureLonLat();
-		double[] ArrangedLeisureLngLat = new double[sugrelplaces
-				.getSugLeisureLonLat().length];
+		//double[] ArrangedLeisureLngLat = new double[sugrelplaces.getSugLeisureLonLat().length];
+		String ArrangedLeisureLngLat ="";
 		for (int i = 0; i < leisureArrayLngLat.length; i++) {
-			ArrangedLeisureLngLat[i] = leisureArrayLngLat[i];
+			ArrangedLeisureLngLat += "_"+String.valueOf(leisureArrayLngLat[i]);
 		}
 /*
 		String[] religiousArray = sugrelplaces.getSuggestReligious();
@@ -120,9 +122,9 @@ public class SuggestRelatedPlacesServlet extends HttpServlet {
 		obj.put("RestList", ArrangedRest);
 		obj.put("LeisureList", ArrangedLeisure);
 		//obj.put("ReligiousList", ArrangedReligious);
-		//obj.put("HotelLLList", ArrangedHotelLngLat);
-		//obj.put("RestLLList", ArrangedRestLngLat);
-		//obj.put("LeisureLLList", ArrangedLeisureLngLat);
+		obj.put("HotelLLList", ArrangedHotelLngLat);
+		obj.put("RestLLList", ArrangedRestLngLat);
+		obj.put("LeisureLLList", ArrangedLeisureLngLat);
 		//obj.put("ReligiousLLList", ArrangedReligiousLngLat);
 		out.print(obj);
 		out.flush();

@@ -72,10 +72,12 @@ public class SuggestRelatedPlaces {
 		
 		trvsugdata = sugrelleisure(city, trvsugdata, table);
 		
+		//trvsugdata = sugrelreligious(city, trvsugdata, table);
 		
-		trvsugdata = sugrelreligious(city, trvsugdata, table);
-		String[] st4 =trvsugdata.getSuggestHotels();
-		System.out.println(st4[0]);
+		
+		
+		//String[] st4 =trvsugdata.getSuggestReligious();
+		//System.out.println(st4[0]);
 		/*BasicDBObject searchQuery2 = new BasicDBObject();
 		List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
 		
