@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,7 +13,15 @@
 <body>
 <div class="container " >
 <div class="row-fluid">
-
+<%@ page import = "lk.travelguide.models.TravelSuggestPlacesData" %>
+<h2>
+<% TravelSuggestPlacesData tv = (TravelSuggestPlacesData)request.getAttribute("LngLatObject"); %>
+</h2>
+<%String [] SelHotels    = tv.getSuggestHotels();
+  String [] SelRests     = tv.getSuggestRests();
+  String [] SelLeisure   = tv.getSuggestLeisure();
+  String [] SelReligious = tv.getSuggestReligious();
+%>
 <div >
 
 Header Image
@@ -31,7 +40,47 @@ Header Image
 </section>
 </div>
 
-<div id="selectedplacesdiv"></div>
+
+<div id="selectedleisurediv">
+<h3>Selected Leisure Places</h3>
+<% for(int i=0 ; i<SelLeisure.length;i++){ %>
+<input type="checkbox" checked="checked" name ="SelectedLeisure" value="<%= SelLeisure[i]%>" disabled='disabled'><%= SelLeisure[i]%><br/>
+
+<%} %>
+<br/>
+</div >
+
+<div id="selectedreligiousdiv">
+<h3>Selected Religious Places</h3>
+<% for(int i=0 ; i<SelReligious.length;i++){ %>
+<input type="checkbox" checked="checked" name ="SelectedReligious" value="<%= SelReligious[i]%>" disabled='disabled'><%= SelReligious[i]%><br/>
+
+<%} %>
+<br/>
+</div >
+
+<div id="selectedrestsdiv">
+<h3>Selected Restaurants</h3>
+<% for(int i=0 ; i<SelRests.length;i++){ %>
+<input type="checkbox" checked="checked" name ="SelectedRests" value="<%= SelRests[i]%>" disabled='disabled'><%= SelRests[i]%><br/>
+
+<%} %>
+<br/>
+</div >
+
+<div id="selectedhotelsdiv">
+<h3>Selected Hotels</h3>
+<% for(int i=0 ; i<SelHotels.length;i++){ %>
+<input type="checkbox" checked="checked" name ="SelectedHotels" value="<%= SelHotels[i]%>" disabled='disabled'><%= SelHotels[i]%><br/>
+
+<%} %>
+<br/>
+</div>
+<div >
+
+
+
+</div>
 
 </font>
 </div>

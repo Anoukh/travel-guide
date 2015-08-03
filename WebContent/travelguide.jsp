@@ -29,7 +29,7 @@ Header Image
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2"><button class="btn btn-lg btn-success" onClick="codeAddress();">Show Location </button></aside>
+<aside class="span2"><button type="button"  class="btn btn-lg btn-success" onClick="codeAddress();">Show Location </button></aside>
 <article class="span4"><input  placeholder="Start Place" type="text" name="pac-input" id="pac-input" class="span8" style="font-size:18px" onKeyUp=""/>
 </article>
 <article class="span2"></article>
@@ -87,7 +87,7 @@ var leLL;
 function relatedplaces(){
 	//window.alert("relatedplaces");
 	var travelplacename =document.getElementById("travelplacename").value;
-	//window.alert(travelplacename);
+	window.alert(travelplacename);
 	$.ajax({
         type: "POST",
         url: 'SuggestRelatedPlacesServlet',
@@ -178,7 +178,7 @@ function relatedrestaurants(){
 <aside class="span6"></aside>
 <article class="span2">
 </article>
-<article class="span4"><button class="btn btn-lg btn-primary" style="float: right;" onclick="travelguidesuggestplaces();">Enter</button></article>
+<article class="span4"><button type="button" class="btn btn-lg btn-primary" style="float: right;" onclick="travelguidesuggestplaces();">Enter</button></article>
 												</br>
 </section>
 </div>
@@ -269,8 +269,8 @@ function relatedrestaurants(){
 <div class="row-fluid">
 <section class="span12">
 <aside class="span6"></aside>
-<article class="span3"><button class="btn btn-lg btn-success">Generate Route</button></article>
-<article class="span3"><button class="btn btn-lg btn-success">Calculate Budget</button></article>
+<article class="span3"><button class="btn btn-lg btn-success" type="submit" onclick="form.action='CalRoutefmTravelServlet';">Generate Route</button></article>
+<article class="span3"><button class="btn btn-lg btn-success" type="submit" onclick="form.action='CalBudfmTravelServlet';">Calculate Budget</button></article>
 
 												</br>
 </section>

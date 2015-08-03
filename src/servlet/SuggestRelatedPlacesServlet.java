@@ -52,16 +52,17 @@ public class SuggestRelatedPlacesServlet extends HttpServlet {
 		sugrelplaces = sgrelpl.sugrelplaces(placename);
 
 		String[] hotelsArray = sugrelplaces.getSuggestHotels();
+		double[] hotelsArrayLngLat = sugrelplaces.getSugHotelsLonLat();
 		//String[] ArrangedHotel = new String[sugrelplaces.getSuggestHotels().length];
 		String ArrangedHotel ="";
 		for (int i = 0; i < hotelsArray.length; i++) {
 			ArrangedHotel +="<input type='checkbox' name='SugHotels' value='"
-				+ hotelsArray[i] + "'>" + hotelsArray[i] + "<br>";
+					+ hotelsArray[i]+"_"+ hotelsArrayLngLat[2*i]+"_"+hotelsArrayLngLat[2*i+1] + "'>" + hotelsArray[i] + "<br>";
 		}
 
 		
 		//String total2 = String.valueOf(total);
-		double[] hotelsArrayLngLat = sugrelplaces.getSugHotelsLonLat();
+		
 		//double[] ArrangedHotelLngLat = new double[sugrelplaces.getSugHotelsLonLat().length];
 		String ArrangedHotelLngLat="";
 		for (int i = 0; i < hotelsArrayLngLat.length; i++) {
@@ -71,14 +72,15 @@ public class SuggestRelatedPlacesServlet extends HttpServlet {
 		// System.out.println(ArrangedHotel[0]);
 
 		String[] restsArray = sugrelplaces.getSuggestRests();
+		double[] restsArrayLngLat = sugrelplaces.getSugRestsLonLat();
 		//String[] ArrangedRest = new String[sugrelplaces.getSuggestRests().length];
 		String ArrangedRest="";
 		for (int i = 0; i < restsArray.length; i++) {
 			ArrangedRest += "<input type='checkbox' name='SugRests' value='"
-					+ restsArray[i] + "'>" + restsArray[i] + "<br>";
+					+ restsArray[i]+"_"+ restsArrayLngLat[2*i]+"_"+restsArrayLngLat[2*i+1]+ "'>" + restsArray[i] + "<br>";
 		}
 
-		double[] restsArrayLngLat = sugrelplaces.getSugRestsLonLat();
+		//double[] restsArrayLngLat = sugrelplaces.getSugRestsLonLat();
 		//double[] ArrangedRestLngLat = new double[sugrelplaces.getSugRestsLonLat().length];
 		String ArrangedRestLngLat ="";
 		for (int i = 0; i < restsArrayLngLat.length; i++) {
@@ -86,14 +88,15 @@ public class SuggestRelatedPlacesServlet extends HttpServlet {
 		}
 
 		String[] leisureArray = sugrelplaces.getSuggestLeisure();
+		double[] leisureArrayLngLat = sugrelplaces.getSugLeisureLonLat();
 		//String[] ArrangedLeisure = new String[sugrelplaces.getSuggestLeisure().length];
 		String ArrangedLeisure="";
 		for (int i = 0; i < leisureArray.length; i++) {
 			ArrangedLeisure += "<input type='checkbox' name='SugLeisure' value='"
-					+ leisureArray[i] + "'>" + leisureArray[i] + "<br>";
+					+ leisureArray[i]+"_"+ leisureArrayLngLat[2*i]+"_"+leisureArrayLngLat[2*i+1]+ "'>" + leisureArray[i] + "<br>";
 		}
 
-		double[] leisureArrayLngLat = sugrelplaces.getSugLeisureLonLat();
+		
 		//double[] ArrangedLeisureLngLat = new double[sugrelplaces.getSugLeisureLonLat().length];
 		String ArrangedLeisureLngLat ="";
 		for (int i = 0; i < leisureArrayLngLat.length; i++) {

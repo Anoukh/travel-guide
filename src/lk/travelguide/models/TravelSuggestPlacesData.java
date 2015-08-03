@@ -11,6 +11,11 @@ private double [] SugRestsLonLat;
 private double [] SugLeisureLonLat;
 private double [] SugReligiousLonLat;
 
+private String [] SelectedPlaces;
+private double [] SelPlacesLonLat;
+
+
+
 
 public void setSuggestHotels(String [] HotelsArray){
 	SuggestHotels =new String[HotelsArray.length];
@@ -100,4 +105,25 @@ public double[] getSugReligiousLonLat(){
 	return SugReligiousLonLat;	
 }
 
+public void setSelectedPlaces(String [] PlacesArray){
+	SelectedPlaces =new String[PlacesArray.length];
+	for(int i=0;i<SelectedPlaces.length;i++){
+		SelectedPlaces[i] = PlacesArray[i];
+	}
+}
+
+public String[] getSelectedPlaces(){
+	return SelectedPlaces;
+}
+
+public void setSelPlacesLonLat(double [] PlacesArray){
+	SelPlacesLonLat =new double[PlacesArray.length];
+	for(int i=0;i<SelPlacesLonLat.length;i++){
+		SelPlacesLonLat[i] = PlacesArray[i];
+	}
+}
+
+public double[] getSelPlacesLonLat(){
+	return SelPlacesLonLat;
+}
 }
