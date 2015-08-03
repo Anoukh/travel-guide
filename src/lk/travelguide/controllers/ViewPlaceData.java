@@ -28,14 +28,10 @@ public class ViewPlaceData {
 		String placetype = (String)cs.get("placetype");
 		String placecity = (String)cs.get("placecity");
 		String placedes = (String)cs.get("placedes");
-<<<<<<< HEAD
 		double lat = (double)cs.get("lat");
 		double lng = (double)cs.get("lng"); 
-=======
-		Double lat = (Double)cs.get("lat");
-		Double lng = (Double)cs.get("lng"); 
->>>>>>> view place
 		String placerating = (String)cs.get("placerating");
+		double placerate = Double.parseDouble(placerating);
 		String placeimagepath = (String)cs.get("placeimagepath");
 		String placecharge= (String)cs.get("placecharge");
 		String lastupdate = (String)cs.get("lastupdate");
@@ -48,7 +44,7 @@ public class ViewPlaceData {
 		pdobj.setPlacedes(placedes);
 		pdobj.setLatitude(lat);
 		pdobj.setLongitude(lng);
-		pdobj.setRating(placerating);
+		pdobj.setRating(placerate);
 		pdobj.setImagepath(placeimagepath);
 		pdobj.setPlacecharge(placecharge);
 		pdobj.setLastupdate(lastupdate);

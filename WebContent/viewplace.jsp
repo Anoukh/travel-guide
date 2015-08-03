@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+ <%@ page import ="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,12 +29,21 @@ Header Image
 <aside class="span8"><input style="font-size:36px" placeholder="Place Name" type="text" name="placename" id="placename" class="span12" onKeyUp="" value="<%= request.getAttribute("placename")%>" readonly/></aside>
 <article class="span4">
 <span class="star-rating">
-  <input type="radio" name="rating" value="1" disabled=<% Object rate = request.getAttribute("noofrates");
-  if(rate.hashCode()/100<=0.2) {%>'disabled' <%} else{ %> ''<%} %>><i></i>
-  <input type="radio" name="rating" value="2" disabled='disabled'><i></i>
-  <input type="radio" name="rating" value="3" disabled='disabled'><i></i>
-  <input type="radio" name="rating" value="4" disabled='disabled'><i></i>
-  <input type="radio" name="rating" value="5" disabled='disabled'><i></i>
+	<% Double rating= (Double)request.getAttribute("rating");
+	  Integer rate = rating.intValue();	%>
+
+ 
+  <% String arr[] = new String[5];
+  Arrays.fill(arr, null);
+  
+  for(int i=0;i<rate;i++){
+		arr[i]="checked='checked'" ; 
+ } %>
+	  <input type="radio" name="rating" value="1" disabled='disabled' <%=arr[0] %> ><i></i>
+	  <input type="radio" name="rating" value="2" disabled='disabled' <%= arr[1]%> ><i></i>
+	  <input type="radio" name="rating" value="3" disabled='disabled' <%=arr[2]%> ><i></i>
+	  <input type="radio" name="rating" value="4" disabled='disabled' <%=arr[3]%> ><i></i>
+	  <input type="radio" name="rating" value="5" disabled='disabled' <%=arr[4]%> ><i></i>
 </span>
 
 </article>

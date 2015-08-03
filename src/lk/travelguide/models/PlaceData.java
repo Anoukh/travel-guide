@@ -5,9 +5,9 @@ public class PlaceData {
 	private String placename;
 	private String placecity;
 	private String placedes;
-	private Double lat;
-	private Double lng;
-	private String rating;
+	private double lat;
+	private double lng;
+	private double rating;
 	private String placecharge;
 	private String lastupdate;
 	private String acceptYN;
@@ -39,7 +39,7 @@ public class PlaceData {
 		this.lng = lng;
 	}
 	
-	public void setRating(String rating){
+	public void setRating(double rating){
 		this.rating = rating;
 	}
 	
@@ -84,15 +84,15 @@ public class PlaceData {
 		return placecharge;
 	}
 	
-	public Double getLatitude(){
+	public double getLatitude(){
 		return lat;
 	}
 	
-	public Double getLongitude(){
+	public double getLongitude(){
 		return lng;
 	}
 	
-	public String getRating(){
+	public double getRating(){
 		return rating;
 	}
 	
