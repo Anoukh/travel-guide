@@ -36,7 +36,9 @@ public class CalRoutefmTravelServlet extends HttpServlet {
 		String [] SugLeisure = request.getParameterValues("SugLeisure");
 		String [] SugReligious = request.getParameterValues("SugReligious");
 		
-		
+//		for (int m=0; m < SugLeisure.length;m++ ){
+//			System.out.println(SugLeisure[m]);
+//		}
 		String [] SugHotelsSplit;
 		String [] SugHotelsNames;
 		double [] SugHotelsLatLng ;
@@ -74,7 +76,7 @@ public class CalRoutefmTravelServlet extends HttpServlet {
 			
 			SugRestsLatLng =new double [2*SugRests.length];
 			SugRestsNames =new String [SugRests.length];
-		for(int i=0; i< SugHotels.length;i++){
+		for(int i=0; i< SugRests.length;i++){
 			SugRestsSplit =  SugRests[i].split("_");
 			SugRestsNames[i] =  SugRestsSplit[0];
 			SugRestsLatLng[2*i]=  Double.parseDouble(SugRestsSplit[1]);
@@ -95,9 +97,11 @@ public class CalRoutefmTravelServlet extends HttpServlet {
 		double [] SugLeisureLatLng ;
 		
 		if(request.getParameter("SugLeisure") != null){ 
+			//System.out.println("in");
 			SugLeisureLatLng =new double [2*SugLeisure.length];
 			SugLeisureNames =new String [SugLeisure.length];
-		for(int i=0; i< SugHotels.length;i++){
+		for(int i=0; i< SugLeisure.length;i++){
+			//System.out.println();
 			SugLeisureSplit =  SugLeisure[i].split("_");
 			SugLeisureNames[i] =  SugLeisureSplit[0];
 			SugLeisureLatLng[2*i]=  Double.parseDouble(SugLeisureSplit[1]);
@@ -112,6 +116,11 @@ public class CalRoutefmTravelServlet extends HttpServlet {
 			SugLeisureNames  = new String[0];
 			SugLeisure = new String[0]; 
 		}
+		
+//		for (int m=0; m < SugLeisureNames.length;m++ ){
+//		System.out.println(SugLeisureNames[m]);
+//	}		
+		
 		
 		String [] SugReligiousSplit;
 		String [] SugReligiousNames;
@@ -155,9 +164,9 @@ public class CalRoutefmTravelServlet extends HttpServlet {
 			LngLat[d+c+b+a+2] =	SugReligiousLatLng[d];
 		}
 		
-		for(int k=0;k<LngLat.length;k++){
-			System.out.println(LngLat[k]);
-		}
+//		for(int k=0;k<LngLat.length;k++){
+//			System.out.println(LngLat[k]);
+//		}
 		
 String [] LngLatNames =new String [1+ SugHotelsNames.length +  SugRestsNames.length + SugLeisureNames.length +  SugReligiousNames.length ];
 		
@@ -178,9 +187,9 @@ LngLatNames[0] = request.getParameter("pac-input");
 			LngLatNames[h+g+f+e+1] =	SugReligiousNames[h];
 		}
 		
-		for(int k=0;k<SugLeisureNames.length;k++){
-			System.out.println(SugLeisureNames[k]);
-		}
+//		for(int k=0;k<SugLeisureNames.length;k++){
+//			System.out.println(SugLeisureNames[k]);
+//		}
 		
 		TravelSuggestPlacesData trvselpls = new TravelSuggestPlacesData();
 		trvselpls.setSelPlacesLonLat(LngLat);
@@ -190,7 +199,7 @@ LngLatNames[0] = request.getParameter("pac-input");
 		trvselpls.setSuggestLeisure(SugLeisureNames);
 		trvselpls.setSuggestReligious(SugReligiousNames);
 		
-		System.out.println(LngLatNames.length);
+		//System.out.println(LngLatNames.length);
 		
 		
 		request.setAttribute("LngLatObject", trvselpls);

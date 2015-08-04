@@ -35,7 +35,7 @@ public class DropDownServlet extends HttpServlet {
 		AutoComPlace pl = new AutoComPlace();
 		String placename = "";
 		String places[] = pl.autocompleteplace("dropdown",placetype, placename);
-		System.out.println(places[1]);
+		//System.out.println(places[1]);
 		for(i=0;i<places.length;i++){
 	 response.getWriter().write("<option value= '" +places[i]+"'>"+places[i]+"</option>"); 
 		}
