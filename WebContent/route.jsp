@@ -26,19 +26,21 @@
   String [] SelRests     = tv.getSuggestRests();
   String [] SelLeisure   = tv.getSuggestLeisure();
   String [] SelReligious = tv.getSuggestReligious();
-  float  [] SelPlacesLngLat =new float [tv.getSelPlacesLonLat().length];
+  
+  double  [] SelPlacesLngLat =tv.getSelPlacesLonLat();
+  
   for(int i =0 ; i<SelPlacesLngLat.length;i++ ){
 	  System.out.println(SelPlacesLngLat[i]);
   }
-  for (int q=0 ;q < SelPlacesLngLat.length; q++){
-	  SelPlacesLngLat[q] = (float)SelPlacesLngLat[q];
-  }
+//   for (int q=0 ;q < SelPlacesLngLat.length; q++){
+// 	  SelPlacesLngLat[q] = (float)SelPlacesLngLat[q];
+//   }
   
   
 %>
 
 <script>
-window.alert(<%= SelPlacesLngLat[0]  %>);
+
 
 </script>
 <div >
@@ -151,7 +153,7 @@ Header Image
         directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);//Create a DirectionsRenderer object.
         directionsService = new google.maps.DirectionsService();//Create a directionsService object.
         var map;
-
+ 	
         var DistanceArray;
         var javaarray;
         var wayPointArray;
@@ -191,7 +193,10 @@ Header Image
             //javaarray[1] = formdata[1];
             <% for (int i=0; i<SelPlacesLngLat.length; i++) { %>
             javaarray[<%= i %>] = "<%= SelPlacesLngLat[i] %>"; 
+            
+            
 <% } %>
+
 //Window.alert(javaarray[1]);
             
 //             for (var i = 0; i < size; i++) {
@@ -222,7 +227,7 @@ Header Image
             wayPointArray = new Array(newSize);
 
             for (var i = 1; i < (size - 2) / 2; i++) {
-                wayPointArray[i - 1] = new google.maps.LatLng(abc[2 * i], abc[2 * i + 1]);
+                wayPointArray[i - 1] = new google.maps.LatLng(abc[2 * i], abc[2 * i +1]);
             }
             wayPoints = new Array();
 
