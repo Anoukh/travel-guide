@@ -11,7 +11,7 @@ public class PlaceData {
 	private String placecharge;
 	private String lastupdate;
 	private String acceptYN;
-	private static String imagepath;
+	private String imagepath;
 	private int noofrates;
 	
 	

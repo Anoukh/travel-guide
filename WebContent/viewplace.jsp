@@ -157,14 +157,14 @@ placeholder="Comment" ></textarea>
 function initialize() {
   //viewlon = 6.788070599999999;
   //viewlat = 79.89128129999995;
-  var lon = request.getAttribute("lng");
-  var lat = request.getAttribute("lat"); 
+  var lon = <%=request.getAttribute("lng")%>
+  var lat = <%=request.getAttribute("lat")%> 
   viewlon = lon;
   viewlat = lat;
-  System.out.println(lon+" * "+lat);
+  
   window.alert(lon);
   
-  var myLatlng = new google.maps.LatLng(viewlon,viewlat);
+  var myLatlng = new google.maps.LatLng(viewlat,viewlon);
   var mapOptions = {
     zoom: 9,
     center: myLatlng
