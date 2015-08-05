@@ -48,7 +48,10 @@ public class ViewPlaceServlet extends HttpServlet {
 		request.setAttribute("placedes", pdobj.getPlacedes());
 		request.setAttribute("rating", rate);
 		request.setAttribute("lastupdate", pdobj.getLastupdate());
-		request.setAttribute("imagepath", pdobj.getImagepath());
+		//String path = pdobj.getImagepath();
+		//System.out.println("path="+path);
+		//String imagepath = path.replace("file:///","");
+		request.setAttribute("imagepath",  pdobj.getImagepath()) ;
 		request.setAttribute("noofrates", pdobj.getNoofrates());
 		request.getRequestDispatcher("/viewplace.jsp").forward(request, response);
 		

@@ -31,6 +31,7 @@ public class ViewPlaceData {
 		double lat = (double)cs.get("lat");
 		double lng = (double)cs.get("lng"); 
 		String placerating = (String)cs.get("placerating");
+		if(placerating==null) placerating="0";
 		double placerate = Double.parseDouble(placerating);
 		String placeimagepath = (String)cs.get("placeimagepath");
 		String placecharge= (String)cs.get("placecharge");

@@ -22,11 +22,12 @@
 Header Image
 
 </div>
-
+<form method="post" action="">
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
 <aside class="span8"><input style="font-size:36px" placeholder="Place Name" type="text" name="placename" id="placename" class="span12" onKeyUp="" value="<%= request.getAttribute("placename")%>" readonly/></aside>
+<input style="font-size:36px"  type="hidden" name="placetype" id="placetype" class="span12" onKeyUp="" value="<%= request.getAttribute("placetype")%>" readonly/>
 <article class="span4">
 <span class="star-rating">
 	<% Double rating= (Double)request.getAttribute("rating");
@@ -82,7 +83,9 @@ Header Image
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span8"><div id="placeimage"><%if(request.getAttribute("imagepath") != null){ %><img src="<%= request.getAttribute("imagepath")%>" height="400px" width="100%"/><% } else { %> <% System.out.println("world");} %> </div></aside>
+<aside class="span8"><div id="placeimage"><%if(request.getAttribute("imagepath") != null){ String path = (String)request.getAttribute("imagepath");
+String imagepath = path.replace("file:///","");%>
+<img src="<%= imagepath%>" height="400px" width="100%"/><% } else { %> <% System.out.println("world");} %> </div></aside>
 <article class="span4"><div id="placemap" class="span12" style="height:400px" ></div></article>
 
 
@@ -95,15 +98,17 @@ Header Image
 <div class="row-fluid">
 <section class="span12">
 <aside class="span8"></aside>
-<article class="span2"><button class="btn btn-lg btn-success">Accept</button></article>
-<article class="span2"><button class="btn btn-lg btn-danger">Reject</button></article>
 
-												</br>
+<article class="span2"><button class="btn btn-lg btn-success" type="submit" onClick="form.action='PlaceAcceptServlet';">Accept</button></article>
+<article class="span2"><button class="btn btn-lg btn-danger" type="submit" onClick="form.action='PlaceRejectServlet';">Reject</button></article>
+
+
+											</br>
 </section>
 </div>
 
 </div>
-
+</form>
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">

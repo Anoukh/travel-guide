@@ -27,16 +27,24 @@ public void updateplacedetails(String placetype,String placename,String placedes
 	
 	BasicDBObject searchQuery = new BasicDBObject().append("placename",placename)
 												.append("placetype", placetype);
-	List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
+	//List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
 	BasicDBObject obj3 = new BasicDBObject();
 	obj3.append("$set", new BasicDBObject().append("placedes",placedes).append("placecharge", placecharge));
 
+<<<<<<< HEAD
 	System.out.println(searchQuery);
 	
 	obj2.add(new BasicDBObject("placename", placename));
 	obj2.add(new BasicDBObject("placetype", placetype));
 
 	DBObject update = new BasicDBObject("$set", obj3);
+=======
+	//obj2.add(new BasicDBObject("placename", placename));
+	//obj2.add(new BasicDBObject("placetype", placetype));
+	
+	
+	//DBObject update = new BasicDBObject("$set", obj3);
+>>>>>>> reject suggesttion completed
 	table.update(searchQuery, obj3);
 	
 	
