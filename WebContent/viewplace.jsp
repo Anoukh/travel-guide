@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+ <%@ page import ="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,11 +29,21 @@ Header Image
 <aside class="span8"><input style="font-size:36px" placeholder="Place Name" type="text" name="placename" id="placename" class="span12" onKeyUp="" value="<%= request.getAttribute("placename")%>" readonly/></aside>
 <article class="span4">
 <span class="star-rating">
-  <input type="radio" name="rating" value="1" disabled='disabled'><i></i>
-  <input type="radio" name="rating" value="2" disabled='disabled'><i></i>
-  <input type="radio" name="rating" value="3" disabled='disabled'><i></i>
-  <input type="radio" name="rating" value="4" disabled='disabled'><i></i>
-  <input type="radio" name="rating" value="5" disabled='disabled'><i></i>
+	<% Double rating= (Double)request.getAttribute("rating");
+	  Integer rate = rating.intValue();	%>
+
+ 
+  <% String arr[] = new String[5];
+  Arrays.fill(arr, null);
+  
+  for(int i=0;i<rate;i++){
+		arr[i]="checked='checked'" ; 
+ } %>
+	  <input type="radio" name="rating" value="1" disabled='disabled' <%=arr[0] %> ><i></i>
+	  <input type="radio" name="rating" value="2" disabled='disabled' <%= arr[1]%> ><i></i>
+	  <input type="radio" name="rating" value="3" disabled='disabled' <%=arr[2]%> ><i></i>
+	  <input type="radio" name="rating" value="4" disabled='disabled' <%=arr[3]%> ><i></i>
+	  <input type="radio" name="rating" value="5" disabled='disabled' <%=arr[4]%> ><i></i>
 </span>
 
 </article>
@@ -43,7 +55,7 @@ Header Image
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span8"><input style="font-size:18px ; border:hidden " placeholder="Place City" type="text" name="placecity" id="placecity" class="span12" onKeyUp="" readonly/></aside>
+<aside class="span8"><input style="font-size:18px ; border:hidden " placeholder="Place City" type="text" name="placecity" id="placecity" class="span12" onKeyUp="" value="<%= request.getAttribute("placecity")%>" readonly/></aside>
 <article class="span4">
 <input style="font-size:18px ; border:hidden" placeholder="Charges" type="text" name="placecharge" id="placecharge" class="span12" onKeyUp="" readonly/>
 
@@ -59,7 +71,7 @@ Header Image
 <aside class="span8"></aside>
 <aside class="span2"><font size="+1">Updated Date</font></aside>
 <article class="span2">
-<input style="font-size:18px; border:hidden" placeholder="Updated Date" type="text" name="placedate" id="placedate" class="span12" onKeyUp="" readonly/>
+<input style="font-size:18px; border:hidden" placeholder="Updated Date" type="text" name="placedate" id="placedate" class="span12" onKeyUp="" value="<%= request.getAttribute("lastupdate")%>" readonly/>
 
 </article>
 
@@ -70,7 +82,7 @@ Header Image
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span8"><div id="placeimage"><img src="" height="400px" width="100%"/></div></aside>
+<aside class="span8"><div id="placeimage"><%if(request.getAttribute("imagepath") != null){ %><img src="<%= request.getAttribute("imagepath")%>" height="400px" width="100%"/><% } else { %> <% System.out.println("world");} %> </div></aside>
 <article class="span4"><div id="placemap" class="span12" style="height:400px" ></div></article>
 
 
@@ -108,7 +120,7 @@ Header Image
 <article class="span3">
 <font size="+1" >
 <textarea rows="2" id="placeusercomment" name="placeusercomment"
-placeholder="Comment"></textarea>
+placeholder="Comment" ></textarea>
 </font>
 </article>
 <article class="span2">
@@ -140,9 +152,18 @@ placeholder="Comment"></textarea>
 </div>
 
 <script>
+
+
 function initialize() {
-  viewlon = 6.788070599999999;
-  viewlat = 79.89128129999995;
+  //viewlon = 6.788070599999999;
+  //viewlat = 79.89128129999995;
+  var lon = request.getAttribute("lng");
+  var lat = request.getAttribute("lat"); 
+  viewlon = lon;
+  viewlat = lat;
+  System.out.println(lon+" * "+lat);
+  window.alert(lon);
+  
   var myLatlng = new google.maps.LatLng(viewlon,viewlat);
   var mapOptions = {
     zoom: 9,

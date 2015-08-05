@@ -59,9 +59,9 @@ public class AddPlaceServlet extends HttpServlet {
 	     String placeimg = "D:/TravelGuideImages/"+placetype+"/"+placename+".jpg";
 	     String lt = (request.getParameter("lat"));
 	   //  System.out.println(request.getParameter("lat"));
-	    float  lat= Float.parseFloat(lt);
+	    Double  lat= Double.parseDouble(lt);
 	     String lg = (request.getParameter("lng"));
-	     float  lng= Float.parseFloat(lg);
+	     Double lng= Double.parseDouble(lg);
 	    String rating = (request.getParameter("rating"));
 	     String placecharge = (request.getParameter("placecharge"));
 	   

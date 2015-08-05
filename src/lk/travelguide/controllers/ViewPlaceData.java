@@ -28,12 +28,14 @@ public class ViewPlaceData {
 		String placetype = (String)cs.get("placetype");
 		String placecity = (String)cs.get("placecity");
 		String placedes = (String)cs.get("placedes");
-		float lat = (float)cs.get("lat");
-		float lng = (float)cs.get("lng"); 
+		double lat = (double)cs.get("lat");
+		double lng = (double)cs.get("lng"); 
 		String placerating = (String)cs.get("placerating");
+		double placerate = Double.parseDouble(placerating);
 		String placeimagepath = (String)cs.get("placeimagepath");
 		String placecharge= (String)cs.get("placecharge");
 		String lastupdate = (String)cs.get("lastupdate");
+		int noofrates = (int)cs.get("noofrates");
 	
 		
 		pdobj.setPlacename(place);
@@ -42,10 +44,11 @@ public class ViewPlaceData {
 		pdobj.setPlacedes(placedes);
 		pdobj.setLatitude(lat);
 		pdobj.setLongitude(lng);
-		pdobj.setRating(placerating);
+		pdobj.setRating(placerate);
 		pdobj.setImagepath(placeimagepath);
 		pdobj.setPlacecharge(placecharge);
 		pdobj.setLastupdate(lastupdate);
+		pdobj.setNoofrates(noofrates);
 	}
 	return pdobj;
 	}

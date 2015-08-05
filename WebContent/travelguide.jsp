@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html >
 <head>
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -19,6 +19,8 @@
 Header Image
 
 </div>
+
+<form action=""  method="post">
 <div style="float:left;width: 40% " >
 <font size="+1">
 
@@ -27,7 +29,7 @@ Header Image
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span2"><button class="btn btn-lg btn-success" onClick="codeAddress();">Show Location </button></aside>
+<aside class="span2"><button type="button"  class="btn btn-lg btn-success" onClick="codeAddress();">Show Location </button></aside>
 <article class="span4"><input  placeholder="Start Place" type="text" name="pac-input" id="pac-input" class="span8" style="font-size:18px" onKeyUp=""/>
 </article>
 <article class="span2"></article>
@@ -69,6 +71,81 @@ var options ='';
     });	
 	
 }
+
+function travelguidesuggestplaces(){
+	//window.alert("hi");
+	relatedplaces();
+	relatedhotels();
+	relatedrestaurants();
+	
+}
+
+var hlLL;
+var rtLL;
+var leLL;
+
+function relatedplaces(){
+	//window.alert("relatedplaces");
+	var travelplacename =document.getElementById("travelplacename").value;
+	window.alert(travelplacename);
+	$.ajax({
+        type: "POST",
+        url: 'SuggestRelatedPlacesServlet',
+        data:  { placename :  travelplacename},
+        dataType: 'json',
+        success: function(dt)
+        {
+        	
+        	//window.alert(dt.HotelLLList);
+ 
+        	var hotelLL =dt.HotelLLList;
+        	 hlLL =hotelLL.split("_");
+        	
+        	//window.alert(hLL[1]);
+        	var restLL  =dt.RestLLList;
+        	 rtLL =restLL.split("_");
+        	var leisureLL =dt.LeisureLLList; 
+        	 leLL =leisureLL.split("_");
+        	
+        	    document.getElementById("relatedhotelsuggestions").innerHTML= dt.HotelList;
+        	    document.getElementById("relatedrestaurantesuggestions").innerHTML= dt.RestList;
+        	    document.getElementById("relatedleisuresuggestions").innerHTML= dt.LeisureList;
+        	    placemarkers(hlLL);
+        	    placemarkers(rtLL); 
+        	    placemarkers(leLL);
+        	    //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });	
+}
+var lgg;
+var laa;
+function placemarkers(LL)
+{
+	//7.2945453, 80.6257814
+	//parseFloat(hlLL[i]), parseFloat(hlLL[i+1])
+	var marker, i;
+	//window.alert(LL[1]+ LL[2] );
+    for (i = 1; i < LL.length; i+=2) { 
+    	//window.alert(parseFloat(hlLL[i]));
+    	//window.alert(parseFloat(hlLL[i+1]));
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(parseFloat(LL[i+1]),parseFloat(LL[i])),
+       // title: 'Hello World!',
+        map: map
+      });
+    //  marker.setMap(map);
+  	
+}
+}
+function relatedhotels(){
+	
+		
+}
+
+function relatedrestaurants(){
+	
+	
+}
 </script>
 
 <div class="gap0"></div>
@@ -95,19 +172,50 @@ var options ='';
 </section>
 </div>
 
-<div id="relatedplacesdiv">
+<div class="gap0"></div>
+<div class="row-fluid">
+<section class="span12">
+<aside class="span6"></aside>
+<article class="span2">
+</article>
+<article class="span4"><button type="button" class="btn btn-lg btn-primary" style="float: right;" onclick="travelguidesuggestplaces();">Enter</button></article>
+												</br>
+</section>
+</div>
+
+
+<div id="relatedreligiousdiv">
 
 <div class="gap0"></div>
 <div class="row-fluid">
 <section class="span12">
-<aside class="span6">Related Places</aside>
+<aside class="span6">Related Religious</aside>
 <article class="span6"></article>
 
 												</br>
 </section>
 </div>
 
-<div id="relatedplacesuggestions">
+<div id="relatedreligioussuggestions">
+</div>
+
+
+
+</div>
+
+<div id="relatedleisurediv">
+
+<div class="gap0"></div>
+<div class="row-fluid">
+<section class="span12">
+<aside class="span6">Related Leisure</aside>
+<article class="span6"></article>
+
+												</br>
+</section>
+</div>
+
+<div id="relatedleisuresuggestions">
 </div>
 
 
@@ -161,8 +269,8 @@ var options ='';
 <div class="row-fluid">
 <section class="span12">
 <aside class="span6"></aside>
-<article class="span3"><button class="btn btn-lg btn-success">Generate Route</button></article>
-<article class="span3"><button class="btn btn-lg btn-success">Calculate Budget</button></article>
+<article class="span3"><button class="btn btn-lg btn-success" type="submit" onclick="form.action='CalRoutefmTravelServlet';">Generate Route</button></article>
+<article class="span3"><button class="btn btn-lg btn-success" type="submit" onclick="form.action='CalBudfmTravelServlet';">Calculate Budget</button></article>
 
 												</br>
 </section>
@@ -170,6 +278,7 @@ var options ='';
 
 
 </div>
+</form>
 
 </div>
 </div>
