@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cost Values</title>
 </head>
-<body>
+<body onload="onloadcostvalues();">
 
 
 <div class="container " >
@@ -17,7 +17,30 @@
 <div>
 
 Header
+<script>
+function onloadcostvalues(){
+	costservlet();
+}
 
+
+function costservlet(){
+	$.ajax({
+        type: "POST",
+        url: 'AutoCostServlet',
+        data:  {},
+        dataType: 'json', 
+        success: function(dt)
+        {
+        	// var options = '';
+        	//window.alert(dt);
+        	document.getElementById("petrol").value= dt.pet;
+        	document.getElementById("diesel").value= dt.die;
+        	
+        }
+    });	
+}
+
+</script>
 </div>
 <div class="gap0"></div>
 

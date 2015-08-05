@@ -24,53 +24,65 @@ public void insertcostvalues(float petrol,float diesel)	{
 		
 		System.out.println("hi1");
 
-		DBObject petrolinsertobj = new BasicDBObject();
-		DBObject dieselinsertobj = new BasicDBObject();
+		BasicDBObject petrolinsertobj = new BasicDBObject();
+		BasicDBObject dieselinsertobj = new BasicDBObject();
+		BasicDBObject petrolvalue =new BasicDBObject();
+		BasicDBObject dieselvalue =new BasicDBObject();
+
 		
 		DBObject searchQuery1 = new BasicDBObject();
-		searchQuery1.put("petrol","");
+		searchQuery1.put("costtype","petrol");
 		
 		DBObject searchQuery2 = new BasicDBObject();
-		searchQuery2.put("diesel","");
+		searchQuery2.put("costtype","diesel");
 		
-		DBCursor cursor1 = table.find(searchQuery1);
-		DBCursor cursor2 = table.find(searchQuery2);
-		//System.out.println(cursor1);
-		
-		if(cursor2.hasNext()){
-			System.out.println("hi3");
-			//DBObject dieselinsertobj = new BasicDBObject();
-			dieselinsertobj.put("diesel", diesel);
-			table.update(searchQuery2, dieselinsertobj);
-
-
-
-		}
+		DBCursor cursor1 = table.find(searchQuery1).limit(1);
+		DBCursor cursor2 = table.find(searchQuery2).limit(1);
+		System.out.println(cursor1.count());
 		
 		
-		else{
-			dieselinsertobj.put("diesel", diesel);
-		
-			table.insert(dieselinsertobj);
-			System.out.println("hi55");
-		}
 
 		
 		if(cursor1.hasNext()){
-			System.out.println("hi2");
+
+			petrolvalue.append("$set", new BasicDBObject().append("petrol",petrol));
+			table.update(searchQuery1, petrolvalue);
 			
-			//DBObject petrolinsertobj = new BasicDBObject();
-			petrolinsertobj.put("petrol", petrol);
-			table.update(searchQuery1, petrolinsertobj);
-		}
-		
-		else{
-		//	System.out.println("hi44");
-			petrolinsertobj.put("petrol", petrol);
-		
-			table.insert(petrolinsertobj);
+
 
 		}
+		
+		
+		else{
+				System.out.println("hi44");
+				petrolinsertobj.put("costtype", "petrol");
+				petrolinsertobj.put("petrol", petrol);
+				
+				table.insert(petrolinsertobj);
+
+				}
+		
+		
+		
+		if(cursor2.hasNext()){
+
+			dieselvalue.append("$set", new BasicDBObject().append("diesel",diesel));
+			table.update(searchQuery2, dieselvalue);
+			
+
+
+		}
+		
+		
+		else{
+				System.out.println("hi44");
+				dieselinsertobj.put("costtype", "diesel");
+				dieselinsertobj.put("diesel", diesel);
+				
+				table.insert(dieselinsertobj);
+
+				}
+	
 		
 		
 				
