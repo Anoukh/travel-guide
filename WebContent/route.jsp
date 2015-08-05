@@ -18,6 +18,7 @@
 <body>
 <div class="container " >
 <div class="row-fluid">
+<form action=""  method="post">
 <%@ page import = "lk.travelguide.models.TravelSuggestPlacesData" %>
 <h2>
 <% TravelSuggestPlacesData tv = (TravelSuggestPlacesData)request.getAttribute("LngLatObject"); %>
@@ -28,6 +29,7 @@
   String [] SelReligious = tv.getSuggestReligious();
   
   double  [] SelPlacesLngLat =tv.getSelPlacesLonLat();
+  String [] SelPlacesNames = tv.getSelectedPlaces();
   
   for(int i =0 ; i<SelPlacesLngLat.length;i++ ){
 	  System.out.println(SelPlacesLngLat[i]);
@@ -83,7 +85,7 @@ Header Image
 <div id="selectedrestsdiv">
 <h3>Selected Restaurants</h3>
 <% for(int i=0 ; i<SelRests.length;i++){ %>
-<input type="checkbox" checked="checked" name ="SelectedRests" value="<%= SelRests[i]%>" disabled='disabled'><%= SelRests[i]%><br/>
+<input type="checkbox" checked="checked" name ="SugRests" value="<%= SelRests[i]%>" onclick="return false"><%= SelRests[i]%><br/>
 
 <%} %>
 <br/>
@@ -92,7 +94,7 @@ Header Image
 <div id="selectedhotelsdiv">
 <h3>Selected Hotels</h3>
 <% for(int i=0 ; i<SelHotels.length;i++){ %>
-<input type="checkbox" checked="checked" name ="SelectedHotels" value="<%= SelHotels[i]%>" disabled='disabled'><%= SelHotels[i]%><br/>
+<input type="checkbox" checked="checked" name ="SugHotels" value="<%= SelHotels[i]%>" onclick="return false"><%= SelHotels[i]%><br/>
 
 <%} %>
 <br/>
@@ -126,7 +128,7 @@ Header Image
 <section class="span12">
 <aside class="span6"></aside>
 <article class="span3"><button class="btn btn-lg btn-success">Print Route</button></article>
-<article class="span3"><button class="btn btn-lg btn-success">Calculate Budget</button></article>
+<article class="span3"><button class="btn btn-lg btn-success" type="submit" onclick="form.action='CalBudfmTravelServlet';"> Calculate Budget</button></article>
 
 												</br>
 </section>
@@ -135,7 +137,7 @@ Header Image
 
 </div>
 
-
+</form>
 </div>
 </div>
 
@@ -188,16 +190,27 @@ Header Image
 
             size = <%= SelPlacesLngLat.length%> ;
             javaarray = new Array(size);
-
+            javaarraynames = new Array(size/2);
             //javaarray[0] = formdata[0];
             //javaarray[1] = formdata[1];
             <% for (int i=0; i<SelPlacesLngLat.length; i++) { %>
             javaarray[<%= i %>] = "<%= SelPlacesLngLat[i] %>"; 
-            
-            
-<% } %>
+           // window.alert(javaarray[1]);            
+			<% } %>
+			
+			<% for (int j=0; j<SelPlacesNames.length; j++) { %>
+			javaarraynames[<%= j %>] = "<%= SelPlacesNames[j] %>"; 
+           // window.alert(javaarray[1]);            
+			<% } %>
+//window.alert(javaarray[1]);
+var tp;
+for (j=0; j< javaarray.length/2;j++){
+	tp = javaarray[2*j];
+	javaarray[2*j] =javaarray[2*j+1];
+	javaarray[2*j +1] =tp;
+}
 
-//Window.alert(javaarray[1]);
+//window.alert(javaarray[1]);
             
 //             for (var i = 0; i < size; i++) {
 <%--                 javaarray[i] = <%= SelPlacesLngLat%>+ [i]; --%>
@@ -260,10 +273,13 @@ Header Image
                 DistanceArray[minPOS] = DistanceArray[j];
                 var swap1 = longlatArray[2 * minPOS];
                 var swap2 = longlatArray[2 * minPOS + 1];
+                var swap3 = javaarraynames[minPOS];
                 longlatArray[2 * minPOS] = longlatArray[startIndex];
                 longlatArray[2 * minPOS + 1] = longlatArray[startIndex + 1];
+                javaarraynames[minPOS] = javaarraynames[startIndex];
                 longlatArray[startIndex] = swap1;
                 longlatArray[startIndex + 1] = swap2;
+                javaarraynames[startIndex] = swap3;
                 //  window.alert( longlatArray[startIndex+1]);
                 calDistance(longlatArray, x + 2);
             }

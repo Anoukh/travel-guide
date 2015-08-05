@@ -187,6 +187,8 @@ LngLatNames[0] = request.getParameter("pac-input");
 			LngLatNames[h+g+f+e+1] =	SugReligiousNames[h];
 		}
 		
+		
+		System.out.println("check 1");
 //		for(int k=0;k<SugLeisureNames.length;k++){
 //			System.out.println(SugLeisureNames[k]);
 //		}
@@ -200,7 +202,7 @@ LngLatNames[0] = request.getParameter("pac-input");
 		trvselpls.setSuggestReligious(SugReligiousNames);
 		
 		//System.out.println(LngLatNames.length);
-		
+		System.out.println("check 2");
 		
 		request.setAttribute("LngLatObject", trvselpls);
 	     request.getRequestDispatcher("/route.jsp").forward(request, response);
