@@ -114,14 +114,16 @@ String imagepath = path.replace("file:///","");%>
 <section class="span12">
 <aside class="span1"><font size="+1">Rating</font></aside>
 <article class="span3"><span class="star-rating">
-  <input type="radio" name="rate" id="rate1" value="1"/><i></i>
-  <input type="radio" name="rate" id="rate2" value="2"/><i></i>
-  <input type="radio" name="rate" id="rate3" value="3"/><i></i>
-  <input type="radio" name="rate" id="rate4" value="4"/><i></i>
-  <input type="radio" name="rate" id="rate5" value="5"/><i></i>
+  <input class="rating" type="radio" name="rate" id="rate1" value="1"/><i></i>
+  <input class="rating" type="radio" name="rate" id="rate2" value="2"/><i></i>
+  <input class="rating" type="radio" name="rate" id="rate3" value="3"/><i></i>
+  <input class="rating" type="radio" name="rate" id="rate4" value="4"/><i></i>
+  <input class="rating" type="radio" name="rate" id="rate5" value="5"/><i></i>
 </span>
 </article>
-<article class="span1"><button class="btn btn-lg btn-warning">Rate</button> </article>
+
+
+<article class="span1"><button class="btn btn-lg btn-warning" type="button" onClick="addrate(document.getElementById('placename').value,document.getElementById('placetype').value);">Rate</button> </article>
 <article class="span3">
 <font size="+1" >
 <textarea rows="2" id="placeusercomment" name="placeusercomment"
@@ -134,7 +136,7 @@ placeholder="Comment" ></textarea>
 </font>
 </article>
 
-<article class="span1"><button class="btn btn-lg btn-primary">Enter</button> 
+<article class="span1"><button class="btn btn-lg btn-primary" type="button" onClick="addcomments(document.getElementById('placename').value,document.getElementById('placetype').value,document.getElementById('placeusercomment').value);">Enter</button> 
 </article>
 
 
@@ -158,6 +160,48 @@ placeholder="Comment" ></textarea>
 
 <script>
 
+function addcomments(placetype,placename,comments){
+	
+	if(comments!=null){
+	$.ajax({
+        type: "POST",
+        url: 'AddCommentsServlet',
+        data:  { placetype : placetype, placename : placename, comments : comments },
+        success: function(dt)
+        {
+        
+        		document.getElementById("placeusercomment").value= "";
+        }
+    });	
+	}
+}
+
+function addrate(placename,placetype){
+	window.alert('add rate');
+	var rate=0;
+	
+	for(i=1;i<6;i++){
+		var num= "rate"+i.toString();
+		
+		if(document.getElementById(num).checked){
+		rate=i;
+		}
+	}
+	window.alert("rate="+rate);
+	
+	if(rate!=null){
+		$.ajax({
+	        type: "POST",
+	        url: 'AddRateServlet',
+	        data:  { placename : placename, placetype : placetype ,rate : rate},
+	        success: function(dt)
+	        {
+	        
+	        		//document.getElementByName("rate").value= "";
+	        }
+	    });	
+		}
+}
 
 function initialize() {
   //viewlon = 6.788070599999999;

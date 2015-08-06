@@ -30,13 +30,14 @@ public class ViewPlaceData {
 		String placedes = (String)cs.get("placedes");
 		double lat = (double)cs.get("lat");
 		double lng = (double)cs.get("lng"); 
-		String placerating = (String)cs.get("placerating");
+		String placerating = cs.get("placerating").toString();
 		if(placerating==null) placerating="0";
 		double placerate = Double.parseDouble(placerating);
 		String placeimagepath = (String)cs.get("placeimagepath");
 		String placecharge= (String)cs.get("placecharge");
 		String lastupdate = (String)cs.get("lastupdate");
-		int noofrates = (int)cs.get("noofrates");
+		double noofrates = (Double)cs.get("noofrates");
+		int noOfRates = (int)noofrates;
 	
 		
 		pdobj.setPlacename(place);
@@ -49,7 +50,7 @@ public class ViewPlaceData {
 		pdobj.setImagepath(placeimagepath);
 		pdobj.setPlacecharge(placecharge);
 		pdobj.setLastupdate(lastupdate);
-		pdobj.setNoofrates(noofrates);
+		pdobj.setNoofrates(noOfRates);
 	}
 	return pdobj;
 	}
