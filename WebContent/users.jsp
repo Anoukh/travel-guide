@@ -15,12 +15,56 @@ function usersonload(){
 	
 }
 
+
+function suggestname(name){
+	$.ajax({
+        type: "POST",
+        url: 'ViewUsersServlet',
+        data:  { Searchname : name , table : "no"},
+        success: function(dt)
+        {
+        	// var options = '';
+        //window.alert(dt);
+//var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	//    options += '<option value="Hi" />';
+        	 //   window.alert(options);
+        	    document.getElementById("names").innerHTML= dt;
+        	    
+        //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });
+	
+}
+
+function findnameuser(name){
+	
+	$.ajax({
+        type: "POST",
+        url: 'ViewUsersServlet',
+        data:  { Searchname : name, table : "yes" },
+        success: function(dt)
+        {
+        	// var options = '';
+        //	window.alert(dt);
+//var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	//    options += '<option value="Hi" />';
+        	 //   window.alert(options);
+        	    document.getElementById("tableallusers").innerHTML= dt;
+        	    
+        //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });
+	
+}
+
 function viewallusers(){
 	//window.alert("viewallusers");
 	$.ajax({
         type: "POST",
         url: 'ViewUsersServlet',
-        data:  { Searchname : "noname" },
+        data:  { Searchname : "noname", table : "yes" },
         success: function(dt)
         {
         	// var options = '';
@@ -67,9 +111,11 @@ Header Image
 <section class="span12">
 <aside class="span2">User Name</aside>
 <article class="span6">
-<input type="text" id="username" name="username" onKeyUp=""/>
-</article>
-<article class="span4"></article>
+<input list="names" name="username" id="username" class="span12" onkeyup="suggestname(this.value);"/>
+<datalist id="names" >
+  
+</datalist>
+<article class="span4"><button type="button" onclick="findnameuser(document.getElementById('username').value);" class="btn btn-lg btn-primary">Find</button></article>
 												</br>
 </section>
 </div>

@@ -7,10 +7,9 @@ public class User {
 	private String user_level;
 	private String request_accept;
 	private String [][] Usernamelevel;
+	private String [] Usernames;
 	
 	
-	
-	 
 	
 	public void setUsername(String name){
 		this.name = name;
@@ -38,6 +37,18 @@ public class User {
 			Usernamelevel[0][i] = UsersArray[0][i];
 			Usernamelevel[1][i] = UsersArray[1][i];
 		}
+	}
+	
+	public void setUsernames(String [] UsersNamesArray){
+		Usernames =new String[UsersNamesArray.length];	
+		for(int i=0;i<UsersNamesArray.length;i++){
+			Usernames[i] = UsersNamesArray[i];
+			
+		}
+	} 
+	
+	public String [] getUsernames(){
+		return Usernames;
 	}
 	
 	

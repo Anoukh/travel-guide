@@ -33,10 +33,12 @@ public class ViewUsersServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("in"); 
 		String searchname = request.getParameter("Searchname");
+		String table = request.getParameter("table");
 		System.out.println(searchname);
 		
 		User user;
 		ViewUsers viewus =new ViewUsers();
+		if(searchname.equals("noname")){
 		user = viewus.viewusernoname();
 		System.out.println("done");
 		String [][] userdetails = user.getUsernamelevel();
@@ -46,6 +48,31 @@ public class ViewUsersServlet extends HttpServlet {
 		for(int i=0;i<userdetails[0].length;i++){
 			 response.getWriter().write("<tr><td>"+userdetails[0][i]+"</td><td>"+userdetails[1][i]+"</td><td><a  href='ChangeRemoveUserServlet?username="+userdetails[0][i]+"&type="+change+"'>Assign</a></td><td><a  href='ChangeRemoveUserServlet?username="+userdetails[0][i]+"&type="+remove+"' >Remove</a></td></tr>"); 
 				}
+		
+		}
+		
+		else if(table.equals("no")){
+			user = viewus.viewuserforname(searchname);	
+			String [] userdetails = user.getUsernames();
+			System.out.println("suggested"); 
+			for(int i=0;i<userdetails.length;i++){
+				 response.getWriter().write("<option value= '" +userdetails[i]+"'>"); 
+					}	
+			
+		}
+		
+		else{
+			user = viewus.viewuserfornamelist(searchname);
+		//	System.out.println("done");
+			String [][] userdetails = user.getUsernamelevel();
+			
+			String change ="change";
+			String remove = "remove";
+			for(int i=0;i<userdetails[0].length;i++){
+				 response.getWriter().write("<tr><td>"+userdetails[0][i]+"</td><td>"+userdetails[1][i]+"</td><td><a  href='ChangeRemoveUserServlet?username="+userdetails[0][i]+"&type="+change+"'>Assign</a></td><td><a  href='ChangeRemoveUserServlet?username="+userdetails[0][i]+"&type="+remove+"' >Remove</a></td></tr>"); 
+					}
+			
+		}
 		
 	}
 
