@@ -13,6 +13,7 @@ public void setHotelCharges(String [][] HCharges){
 	for(int i=0;i<HCharges[0].length;i++){
 		HotelCharges[0][i] = HCharges[0][i];
 		HotelCharges[1][i] = HCharges[1][i];
+		//System.out.println(HotelCharges[0][i] + HotelCharges[1][i] );
 	}
 }
 

@@ -9,7 +9,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>All Users</title>
 </head>
-<body>
+<script type="text/javascript">
+function usersonload(){
+	viewallusers();
+	
+}
+
+function viewallusers(){
+	//window.alert("viewallusers");
+	$.ajax({
+        type: "POST",
+        url: 'ViewUsersServlet',
+        data:  { Searchname : "noname" },
+        success: function(dt)
+        {
+        	// var options = '';
+        //	window.alert(dt);
+//var options ='';	
+        	 // for(var i = 0; i < mycars.length; i++)
+        	//    options += '<option value="Hi" />';
+        	 //   window.alert(options);
+        	    document.getElementById("tableallusers").innerHTML= dt;
+        	    
+        //	document.getElementById("places").value = "'"+dt+"'";
+        }
+    });
+	
+}
+
+
+
+</script>
+<body onload="usersonload();">
 
 <div class="container " >
 <div class="row-fluid">

@@ -6,6 +6,11 @@ public class User {
 	private String email;
 	private String user_level;
 	private String request_accept;
+	private String [][] Usernamelevel;
+	
+	
+	
+	 
 	
 	public void setUsername(String name){
 		this.name = name;
@@ -25,6 +30,20 @@ public class User {
 	
 	public void setRequest_Accept(String request_accept){
 		this.request_accept = request_accept;
+	}
+	
+	public void setUsernamelevel(String [][] UsersArray){
+		Usernamelevel =new String[UsersArray.length][UsersArray[0].length];	
+		for(int i=0;i<UsersArray[0].length;i++){
+			Usernamelevel[0][i] = UsersArray[0][i];
+			Usernamelevel[1][i] = UsersArray[1][i];
+		}
+	}
+	
+	
+	
+	public String [][] getUsernamelevel(){
+		return Usernamelevel;
 	}
 	
 	

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import lk.travelguide.controllers.BudgetCalculate;
+import lk.travelguide.models.PlaceChargesData;
+
 /**
  * Servlet implementation class CalBudfmTravelServlet
  */
@@ -30,12 +33,14 @@ public class CalBudfmTravelServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String [] SugHotels = request.getParameterValues("SugHotels");
 		String [] SugRests = request.getParameterValues("SugRests");
-		
+		String distance =request.getParameter("routedistance");
+				
 		String [] SugHotelNames;
 		String [] SugRestNames;
 	String[] SugHotelsSplit;
 	String[] SugRestsSplit;
-	
+	PlaceChargesData plch= new PlaceChargesData();
+	BudgetCalculate budcal =new BudgetCalculate();
 		if(request.getParameter("SugHotels") != null){ 
 		SugHotelNames = new String [SugHotels.length];
 		
@@ -61,6 +66,27 @@ public class CalBudfmTravelServlet extends HttpServlet {
 			SugRestNames[i] = SugRestsSplit[0] ;
 		}
 		//System.out.println(SugHotelNames[0]);
+		
+		plch =budcal.calculateBudget(SugHotelNames, SugRestNames);
+		
+		//System.out.println(distance);
+		if(request.getParameter("routedistance")!= null){
+		String st =distance.replace(" km","");
+		 request.setAttribute("pldistance", st);
+		}
+		 request.setAttribute("plcostvals", plch);
+	     request.getRequestDispatcher("/budget.jsp").forward(request, response);
+//		String [][] abc;
+//		String [][] def;
+//		abc =plch.getHotelCharges();
+//		def =plch.getRestCharges();
+		
+//		if(def != null){
+//		for(int h=0; h<def[0].length;h++){
+//			System.out.println(def[0][h] +" "+def[1][h]);	
+//			
+//		}
+//		}
 		
 	}
 

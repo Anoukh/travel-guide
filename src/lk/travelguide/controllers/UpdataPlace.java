@@ -30,14 +30,12 @@ public void updateplacedetails(String placetype,String placename,String placedes
 	List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
 	BasicDBObject obj3 = new BasicDBObject();
 	obj3.append("$set", new BasicDBObject().append("placedes",placedes).append("placecharge", placecharge));
-	 
-	
-	System.out.println(searchQuery);
 
+	System.out.println(searchQuery);
+	
 	obj2.add(new BasicDBObject("placename", placename));
 	obj2.add(new BasicDBObject("placetype", placetype));
-	
-	
+
 	DBObject update = new BasicDBObject("$set", obj3);
 	table.update(searchQuery, obj3);
 	

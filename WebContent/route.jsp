@@ -331,7 +331,7 @@ for (j=0; j< javaarray.length/2;j++){
                 dis[i] = (myroute.legs[i].distance.value) / 1000;
                 total += dis[i];
             }
-
+			//window.alert(total);
             for (var i = 0; i < myroute.legs.length; i++) {
                 dis[i] = myroute.legs[i].duration.value;
                 dur += dis[i];
@@ -342,8 +342,8 @@ for (j=0; j< javaarray.length/2;j++){
             duration=d;
             total = total;
             //alert(dis+' km');
-            document.getElementById('total').innerHTML= total + ' km';
-            document.getElementById('duration').innerHTML = d + 'hours';
+            document.getElementById('routedistance').value= total + ' km';
+           // document.getElementById('duration').innerHTML = d + 'hours';
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
