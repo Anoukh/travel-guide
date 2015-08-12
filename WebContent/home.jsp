@@ -24,13 +24,13 @@ Header Image
 <div style="float:left; width: 60% ">
 Search Bar
 <font size="+2">
-<form action="" method="post">
+<form action="ViewPlaceServlet" method="get">
 <div class="gap4"></div>
 <div class="row-fluid">
 <section class="span12">
 <aside class="span4">Place Type</aside>
 <article class="span6">
-<select name="placetype" id="placetype" onFocus="" onChange="">
+<select name="type" id="placetype" onFocus="" onChange="">
 <option value="Hotel">Hotel</option>
 <option value="Restaurant">Restaurant</option>
 <option value="Leisure">Leisure</option>
@@ -70,7 +70,7 @@ var options ='';
 <section class="span12">
 <aside class="span4">Name</aside>
 <article class="span8">
-<input list="places" name="placename" id="placename" class="span12" onkeyup="suggestplace(document.getElementById('placetype').value,this.value);"/>
+<input list="places" name="place" id="placename" class="span12" onkeyup="suggestplace(document.getElementById('placetype').value,this.value);"/>
 <datalist id="places" >
   
 </datalist>
@@ -100,19 +100,25 @@ var options ='';
 Admin Part
 
 <div class="adminhome">
+
+<% String userlevel =(String)session.getAttribute("sessionuserlevel");
+if(userlevel.equals("Admin")){
+
+
+%>
 <div class="gap1 span12"></div>
 
-<button  class="btn btn-lg btn-warning span12 " onClick="">Update Place Details</button>
+<button  class="btn btn-lg btn-warning span12 " onClick="window.location='updateplace.jsp'">Update Place Details</button>
 <div class="gap1 span12"></div>
-<button  class="btn btn-lg btn-warning span12" onClick="">View Suggested Places</button>
+<button  class="btn btn-lg btn-warning span12" onClick="window.location='suggestedplaces.jsp'">View Suggested Places</button>
 <div class="gap1 span12"></div>
-<button  class="btn btn-lg btn-warning span12" onClick="">View Cost Values</button>
+<button  class="btn btn-lg btn-warning span12" onClick="window.location='costvalues.jsp'">View Cost Values</button>
 <div class="gap1 span12"></div>
-<button  class="btn btn-lg btn-warning span12" onClick="">View All Users</button>
+<button  class="btn btn-lg btn-warning span12" onClick="window.location='users.jsp'">View All Users</button>
 <div class="gap1 span12"></div>
 </div>
 
-
+<%} %>
 </div>
 
 </div>

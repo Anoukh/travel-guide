@@ -50,21 +50,20 @@ public class LoginServlet extends HttpServlet {
 		     String username = (request.getParameter("LoginUserName"));
 		     String password = (request.getParameter("LoginPassword"));
 
-
+		     User user ;
 		     System.out.println(username);
 		     System.out.println(password);
 		     
-		     //Login obj = new Login();
-		     String loginmsg =Login.authentication(username,password);
-		     System.out.println(loginmsg);
+		     Login login = new Login();
+		     user =login.authentication(username,password);
+		     System.out.println(user);
 		     
-		     User user = new User();
+		     
 		     String userlevel = user.getUser_Level();
 		     
-		     HttpSession levelsession = request.getSession();
-		     levelsession.setAttribute("userlevel",userlevel);
+		    
 		     
-		     if(loginmsg=="loginfail")
+		     if(user == null)
 		     {
 		    	 String message = null;
 			     
@@ -78,7 +77,10 @@ public class LoginServlet extends HttpServlet {
 		     request.getRequestDispatcher("/login.jsp").forward(request, response);
 		     }
 		     
-		     else if(loginmsg == "loginsuccess"){
+		     else if(user != null){
+		    	 HttpSession levelsession = request.getSession();
+		    	 levelsession.setAttribute("sessionuserlevel",userlevel);
+			     System.out.println(levelsession.getAttribute("sessionuserlevel") +"    level");
 		    	 response.sendRedirect("home.jsp");
 		     }
 		     System.out.println("world");

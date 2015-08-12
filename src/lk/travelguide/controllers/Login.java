@@ -25,11 +25,12 @@ import com.mongodb.WriteResult;
 
 public class Login {
 	
-public static String authentication(String name, String password){
+public User authentication(String name, String password){
 		System.out.println("authenticating");
 		boolean auth ;
 		DB db;
 		String message = null;
+		User userdata = new User();
 		/*
 		try {
 			mongo = new MongoClient( "localhost" , 27017 );
@@ -63,25 +64,25 @@ public static String authentication(String name, String password){
 			String pass = (String)cs.get("password");
 			String username = (String)cs.get("name");
 			String email = (String)cs.get("email");
-			String user_level = (String)cs.get("user_level");
+			String user_level = (String)cs.get("userlevel");
 			String request_accept = (String)cs.get("request_accept");
 			//System.out.println(pass+"	"+username);
 			
-			User userdata = new User();
+			
 			userdata.setUsername(name);
 			userdata.setPassword(password);
 			userdata.setEmail(email);
 			userdata.setUser_Level(user_level);
 			userdata.setRequest_Accept(request_accept);
 			
-			System.out.println(user_level);    
-			message ="loginsuccess";
+			System.out.println("Login check level "+user_level);    
+			
 			
 		}
 		
 		
 		else{ 
-			message ="loginfail";
+			userdata =null;
 			
 			//System.out.println("failed");
 			
@@ -102,7 +103,7 @@ public static String authentication(String name, String password){
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return message;
+		return userdata;
 		
 	}
 	
