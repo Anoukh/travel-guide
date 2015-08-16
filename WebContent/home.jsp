@@ -5,6 +5,7 @@
 <head>
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/customnavbar.css" rel="stylesheet" type="text/css">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="css/project.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,17 +13,34 @@
 </head>
 <body>
 
+
+
 <div class="container " >
 <div class="row-fluid">
 
-<div >
+<style>
 
-Header Image
+</style>
+<section ><font size="+2">
+<ul class="nav nav-tabs navbar-inverse"  id="navigationbar">    
 
-</div>
-
+<li style="width:25%"> 
+        <a href="home.jsp">Home</a>
+         </li>
+<li style="width:25%"> 
+        <a href="addplace.jsp">Add Place</a>
+         </li>
+<li style="width:25%"> 
+        <a href="travelguide.jsp">Travel Guide</a>
+         </li>		 
+<li style="width:25%"> 
+        <a href="LogoutServlet">Log Out</a>
+         </li>		
+</ul>
+</font>
+</section>
 <div style="float:left; width: 60% ">
-Search Bar
+
 <font size="+2">
 <form action="ViewPlaceServlet" method="get">
 <div class="gap4"></div>
@@ -97,7 +115,7 @@ var options ='';
 </div>
 <div style="float: left; width: 40%">
 
-Admin Part
+
 
 <div class="adminhome">
 

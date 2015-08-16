@@ -17,11 +17,24 @@
 <div class="container " >
 <div class="row-fluid">
 
-<div >
+<section ><font size="+2">
+<ul class="nav nav-tabs navbar-inverse"  id="navigationbar">    
 
-Header Image
-
-</div>
+<li style="width:25%"> 
+        <a href="home.jsp">Home</a>
+         </li>
+<li style="width:25%"> 
+        <a href="addplace.jsp">Add Place</a>
+         </li>
+<li style="width:25%"> 
+        <a href="travelguide.jsp">Travel Guide</a>
+         </li>		 
+<li style="width:25%"> 
+        <a href="LogoutServlet">Log Out</a>
+         </li>		
+</ul>
+</font>
+</section>
 <form method="post" action="">
 <div class="gap0"></div>
 <div class="row-fluid">

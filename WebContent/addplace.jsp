@@ -17,7 +17,25 @@
 	<div class="container ">
 		<div class="row-fluid">
 
-			<div>Header Image</div>
+<section ><font size="+2">
+<ul class="nav nav-tabs navbar-inverse"  id="navigationbar">    
+
+<li style="width:25%"> 
+        <a href="home.jsp">Home</a>
+         </li>
+<li style="width:25%"> 
+        <a href="addplace.jsp">Add Place</a>
+         </li>
+<li style="width:25%"> 
+        <a href="travelguide.jsp">Travel Guide</a>
+         </li>		 
+<li style="width:25%"> 
+        <a href="LogoutServlet">Log Out</a>
+         </li>		
+</ul>
+</font>
+</section>			
+
 			<script>
 				function showhideplchargediv(placetype) {
 					if (placetype == "Hotel" || placetype == "Restaurant") {

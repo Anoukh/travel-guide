@@ -27,3 +27,20 @@
 .tablebodyrowcol tr:nth-child(even) { /*(even) or (2n 0)*/
 	background: #ffffff;
 }
+
+#navigationbar{
+color: rgba(20, 194, 8, 1);
+	}
+
+#navigationbar li a {
+	color: rgba(20, 194, 8, 1);
+    background-color: rgba(21, 59, 1, 1);
+    font-size: 30px;
+    text-align: center;
+	}
+
+#navigationbar li a:hover{
+	 color: rgba(180, 240, 0, 1);
+    background-color: rgba(10, 97, 4, 1);
+	}	
+	
